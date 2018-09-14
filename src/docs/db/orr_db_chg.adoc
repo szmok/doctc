@@ -1,0 +1,16 @@
+:imagesdir: images
+
+= DBORR wind of change
+
+// numbering from here on
+:numbered:
+
+<<<<
+include::orr_db_chg/introduction_and_goals.adoc[leveloffset=+1]
+
+---
+<<<<
+include::orr_db_chg/high_level.adoc[leveloffset=+1]
+
+---
+<<<<

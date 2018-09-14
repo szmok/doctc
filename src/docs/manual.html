@@ -1,0 +1,3839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.7.1">
+<title>docToolchain Manual</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote::before{display:none}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{word-spacing:0;line-height:1.6}
+.quoteblock.abstract blockquote::before,.quoteblock.abstract p::before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>docToolchain Manual</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction_and_goals">1. Introduction and Goals</h2>
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}01_introduction_and_goals.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Jump directly to the <a href="https://github.com/docToolchain/docToolchain">github repository</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_create_awesome_docs">1.1. create awesome docs!</h3>
+<div class="paragraph">
+<p><em>docToolchain</em> is an implementation of the <a href="http://www.writethedocs.org/guide/docs-as-code/"><em>docs-as-code</em></a> approach for software architecture plus some additional automation.
+The basis of docToolchain is the philosophy that software documentation should be treated in the same way as code together with the <a href="http://arc42.org"><em>arc42</em></a> template for software architecture.</p>
+</div>
+<div class="paragraph">
+<p>How it all began&#8230;&#8203;</p>
+</div>
+<div class="sect3">
+<h4 id="_docs_as_code">1.1.1. docs-as-code</h4>
+<div class="paragraph">
+<p>Before this project started, I wasn&#8217;t aware of the term <em>docs-as-code</em>.
+I just grew tired of keeping all my architecture diagrams up to date by copiing them from my UML tool over to my word processor.</p>
+</div>
+<div class="paragraph">
+<p>As a lazy developer, I told myself 'there has to be a better way of doing this'.
+And I started to automate the diagram export and switch from a full fledged word processor over to a markup renderer.
+This enable me to reference the diagrams from within my text and update them just before I render the document.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_arc42">1.1.2. arc42</h4>
+<div class="paragraph">
+<p>Since my goal was to document software architectures, I was already using arc42 - a template for software architecture.
+At this time, it used the MS Word template.</p>
+</div>
+<div class="paragraph">
+<p>But what is arc42?</p>
+</div>
+<div class="paragraph">
+<p>Dr. Gernot Starke and Peter Hruschka created this template in a joint effort to create a standard for software architecture documents.
+The dumped all their experience about software architectures into not only a structure but also explaining texts.
+These explanations are part of every chapter of the template and give you guidance on how to write each chapter of the document.</p>
+</div>
+<div class="paragraph">
+<p>arc42 is available in many formats like MS Word, textile and Confluence and all these formats are automatically generated from one <em>golden master</em> which is formatted in <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/"><em>asciidoc</em></a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_doctoolchain">1.1.3. docToolchain</h4>
+<div class="paragraph">
+<p>In order to follow the <em>docs-as-code</em> approach, you need a build script which automates steps like exporting diagrams and rendering the used markdown (<em>AsciiDoc</em> in case of <em>docToolchain</em>) to the target format.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, such a build script is not easy to create in the first place ('how do I create .docx?', 'why does lib x not work with lib y?') and it is also not too easy to maintain.</p>
+</div>
+<div class="paragraph">
+<p><em>docToolchain</em> is the result of my journey through the <em>docs-as-code</em> land.
+The goal is to have an easy to use build script which only has to be configured and not modified and which is maintained by a community as open source software.</p>
+</div>
+<div class="paragraph">
+<p>The technical steps of my journey are written down in my blog: <a href="https://rdmueller.github.io" class="bare">https://rdmueller.github.io</a>.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Let&#8217;s start with what you&#8217;ll get when you use <em>docToolchain</em>&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_benefits_of_the_docs_as_code_approach">1.2. Benefits of the docs-as-code Approach</h3>
+<div class="paragraph">
+<p>You want to write technical docs for your software project.
+So it is very likely that you already have the tools and proccesses to work with source code in place.
+Why not also use it for your docs?</p>
+</div>
+<div class="sect3">
+<h4 id="_document_management_system">1.2.1. Document Management System</h4>
+<div class="paragraph">
+<p>By using a version control system like <a href="https://git-scm.com/">Git</a>, you get a perfect document management system for free.
+It let&#8217;s you version your docs, branch them and gives you an audit trail.
+You are even able to check who wrote which part of the docs.
+Isn&#8217;t that great?</p>
+</div>
+<div class="paragraph">
+<p>Since your docs are now just plain text, it is also easy to do a diff and see exactly what has changed.</p>
+</div>
+<div class="paragraph">
+<p>And when you store your docs in the same repository as your code, you always have both in sync!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_collaboration_and_review_process">1.2.2. Collaboration and Review Process</h4>
+<div class="paragraph">
+<p>Git as a distributed version control system let&#8217;s you even collaborate on your docs.
+People can fork the docs and send you pull requests for the changes they made.
+By reviewing the pull request, you have a perfect review process out of the box - by accepting the pull request, you show that you&#8217;ve reviewed and accepted the changes.
+Most git frontends like <a href="https://www.bitbucket.org">Bitbucket</a>, <a href="https://gitlab.com">Gitlab</a> and of course <a href="https://github.com">Github</a> also allow you to reject pull requests with comments.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_image_references_and_code_snippets">1.2.3. Image References and Code Snippets</h4>
+<div class="paragraph">
+<p>Instead of pasting images to a binary document format, you now can reference images.
+This will ensure that those images are always up to date every time you rebuild your documents.</p>
+</div>
+<div class="paragraph">
+<p>In addition, you can reference code snippets directly from your source code.
+This way, these snippets are also always up to date!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_compound_and_stakeholder_tailored_docs">1.2.4. Compound and Stakeholder-Tailored Docs</h4>
+<div class="paragraph">
+<p>Since you can not only reference images and code snippets but also sub-documents, you can split your docs into several sub-documents and a master which brings all those docs together.
+But you are not restricted to one master - you can create master docs for several different stakeholder which only contain the chapters needed for them.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_many_more_features">1.2.5. many more Features&#8230;&#8203;</h4>
+<div class="paragraph">
+<p>If you can dream it, you can script it.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Want to include a list of open issues from Jira? <strong>✓</strong> Check.</p>
+</li>
+<li>
+<p>Want to include a changelog from Git? <strong>✓</strong> Check.</p>
+</li>
+<li>
+<p>Want to use inline, text based diagrams? <strong>✓</strong> Check.</p>
+</li>
+<li>
+<p>and many more&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_install_doctoolchain">2. How to install docToolchain</h2>
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}02_install.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_the_tool">2.1. Get the tool</h3>
+<div class="paragraph">
+<p>To start with docToolchain you need to get a copy of the current docToolchain repository.
+The easiest way is to clone the repository without history and remove the <code>.git</code> folder:</p>
+</div>
+<div class="listingblock">
+<div class="title">Linux with git clone</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">git clone --recursive https://github.com/docToolchain/docToolchain.git &lt;docToolchain home&gt;
+rm -rf .git
+rm -rf resources/asciidoctor-reveal.js/.git
+rm -rf resources/reveal.js/.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>--recursive</code> option is required because the repository contains 2 submodules - <code>resources/asciidoctor-reveal.js</code> and <code>resources/reveal.js</code>.</p>
+</div>
+<div class="paragraph">
+<p>Another way is to download the zipped git repository and rename it:</p>
+</div>
+<div class="listingblock">
+<div class="title">Linux with download as zip</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">wget https://github.com/docToolchain/docToolchain/archive/master.zip
+unzip master.zip
+
+# fetching dependencies
+
+cd docToolchain-master/resources
+
+rm -d reveal.js
+wget https://github.com/hakimel/reveal.js/archive/tags/3.3.0.zip -O reveal.js.zip
+unzip reveal.js.zip
+mv reveal.js-tags-3.3.0 reveal.js
+
+rm -d asciidoctor-reveal.js
+wget https://github.com/asciidoctor/asciidoctor-reveal.js/archive/9667f5c.zip -O asciidoctor-reveal.js.zip
+unzip asciidoctor-reveal.js.zip
+mv asciidoctor-reveal.js-9667f5c5d926b3be48361d6d6413d3896954894c asciidoctor-reveal.js
+
+mv docToolchain-master &lt;docToolchain home&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you work (like me) on a Windows environment, just download and unzip the <a href="https://github.com/docToolchain/docToolchain/archive/master.zip">repository</a> as well as its dependencies:
+<a href="https://github.com/hakimel/reveal.js/archive/tags/3.3.0.zip">reveal.js</a> and
+<a href="https://github.com/asciidoctor/asciidoctor-reveal.js/archive/9667f5c.zip">asciidoctor-reveal.js</a>.</p>
+</div>
+<div class="paragraph">
+<p>After unzipping, put the dependencies in <code>resources</code> folder, so that the structure is the same as on <a href="https://github.com/docToolchain/docToolchain/tree/master/resources">GitHub</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can add &lt;docToolchain home&gt;/bin to your PATH or you can run doctoolchain with full path if you prefer.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_initialize_directory_for_documents">2.2. Initialize directory for documents</h3>
+<div class="paragraph">
+<p>The next step after getting docToolchain is to initialize a directory where your documents live. In docToolchain this
+directory is named "newDocDir" during initialization, or just "docDir" later on.</p>
+</div>
+<div class="sect3">
+<h4 id="_existing_documents">2.2.1. Existing documents</h4>
+<div class="paragraph">
+<p>If you already have some existing documents in AsciiDoc format in your project, you need to put the configuration
+file there to inform docToolchain what and how to process. You can do that manually by copying the contents of
+template_config directory. You can also do that by running <code>initExisting</code> task.</p>
+</div>
+<div class="listingblock">
+<div class="title">Linux initExisting example</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">cd &lt;docToolchain home&gt;
+./gradlew -b init.gradle initExisting -PnewDocDir=&lt;your directory&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You need to open Config.groovy file and configure names of your files properly.
+You may also change the PDF schema file to your taste.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_arc42_from_scratch">2.2.2. Arc42 from scratch</h4>
+<div class="paragraph">
+<p>If you don&#8217;t have existing documents yet, or if you need a fresh start, you can get the Arc42 template in AsciiDoc
+format. You can do that by manually downloading from <a href="http://arc42.org/download" class="bare">http://arc42.org/download</a>. You can also to that by running
+<code>initArc42&lt;language&gt;</code> task. Currently supported languages are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DE - German.</p>
+</li>
+<li>
+<p>EN - English.</p>
+</li>
+<li>
+<p>ES - Spanish.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Linux initArc42EN example</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">cd &lt;docToolchain home&gt;
+./gradlew -b init.gradle initArc42EN -PnewDocDir=&lt;newDocDir&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Config.groovy file is then preconfigured to use the downloaded template.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/arc42/">Let&#8217;s add Content!</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build">2.3. Build</h3>
+<div class="paragraph">
+<p>This should already be enough to start a first build.</p>
+</div>
+<div class="listingblock">
+<div class="title">Linux</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">doctoolchain &lt;docDir&gt; generateHTML
+doctoolchain &lt;docDir&gt; generatePDF</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Windows</div>
+<div class="content">
+<pre class="highlight"><code>doctoolchain.bat &lt;docDir&gt; generateHTML
+doctoolchain.bat &lt;docDir&gt; generatePDF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&lt;docDir&gt; may be relative, e.g. ".", or absolute.</p>
+</div>
+<div class="paragraph">
+<p>As a result, you will see the progress of your build together with some warnings which you can just ignore for the moment.</p>
+</div>
+<div class="paragraph">
+<p>The first build generated some files within the <code>&lt;docDir&gt;/build</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>build
+|-- html5
+|   |-- arc42-template.html
+|   `-- images
+|       |-- 05_building_blocks-EN.png
+|       |-- 08-Crosscutting-Concepts-Structure-EN.png
+|       `-- arc42-logo.png
+`-- pdf
+    |-- arc42-template.pdf
+    `-- images
+        |-- 05_building_blocks-EN.png
+        |-- 08-Crosscutting-Concepts-Structure-EN.png
+        `-- arc42-logo.png</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Congratulations!</strong> if you see the same folder structure, you just managed to render the standard arc42 template as html and pdf!</p>
+</div>
+<div class="paragraph">
+<p>If you didn&#8217;t get the right output, please raise an issue on <a href="https://github.com/docToolchain/docToolchain/issues">github</a></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Posts: <a href="https://rdmueller.github.io/enterprise-edition/">Behind the great Firewall</a>, <a href="https://rdmueller.github.io/enterprise-edition2/">Enterprise AsciiDoctor</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publish_to_confluence">2.4. Publish to Confluence</h3>
+<div class="paragraph">
+<p>In addition to <code>Config.groovy</code> there is also a <code>scripts/ConfluenceConfig.groovy</code> file. If you are not using Confluence
+you can remove it. If you use Confluence, then you need to open this file and adapt to your environment.
+You can also create multiple copies of that file. For example you can have <code>ConfluenceConfig.groovy</code> for publishing
+official pages, and <code>MyConfluenceConfig.groovy</code> with a different Confluence space for reviews.</p>
+</div>
+<div class="paragraph">
+<p>The paths to those configuration files can be provided by giving -P option to doctoolchain, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash"># Uses scripts/ConfluenceConfig.groovy by default
+doctoolchain &lt;docDir&gt; publishToConfluence --no-daemon -q
+
+# Uses scripts/MyConfluenceConfig.groovy
+doctoolchain &lt;docDir&gt; publishToConfluence -PconfluenceConfigFile=scripts/MyConfluenceConfig.groovy --no-daemon -q</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview_of_available_tasks">3. Overview of available Tasks</h2>
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_tasks.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>This chapter explains all docToolchain specific tasks.</p>
+</div>
+<div class="paragraph">
+<p>The following picture gives an overview of the whole build system:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/Overview2.png" alt="Overview2">
+</div>
+<div class="title">Figure 1. docToolchain</div>
+</div>
+<div class="sect2">
+<h3 id="_conventions">3.1. Conventions</h3>
+<div class="paragraph">
+<p>There are some simple naming conventions for the tasks.
+They might be confusing at first and that&#8217;s why they are explained here.</p>
+</div>
+<div class="sect3">
+<h4 id="_generatex">3.1.1. generateX</h4>
+<div class="paragraph">
+<p><em>render</em> would have been another good prefix, since these tasks use the plain AsciiDoctor functionality to render the source to a given format.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exportx">3.1.2. exportX</h4>
+<div class="paragraph">
+<p>These tasks export images and AsciiDoc snippets from other systems or file formats.
+The resulting artefacts can then be included from your main sources.</p>
+</div>
+<div class="paragraph">
+<p>What&#8217;s different to the <em>generateX</em> tasks is that you don&#8217;t need to export with each build.</p>
+</div>
+<div class="paragraph">
+<p>It is also likely that you have to put the resulting artefacts under version control because the tools needed for the export (like Sparx Enterprise Architect or MS PowerPoint) are likely to be not available on a build server or on another contributors machine.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_converttox">3.1.3. convertToX</h4>
+<div class="paragraph">
+<p>These tasks take the output from AsciiDoctor and convert it (through other tools) to the target format.
+This results in a dependency on a <em>generateX</em> task and another external tool (currently <a href="http://pandoc.org">pandoc</a>).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_publishtox">3.1.4. publishToX</h4>
+<div class="paragraph">
+<p>These tasks not only convert your documents but also deploy/publish/move them to a remote system&#8201;&#8212;&#8201;currently Confluence.
+This means that the result is likely to be visible immediately to others.</p>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generatehtml">3.2. generateHTML</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_generateHTML.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/generateHTML.png" alt="generateHTML">
+</div>
+</div>
+<div class="paragraph">
+<p>This is the standard AsciiDoctor generator which is supported out of the box.</p>
+</div>
+<div class="paragraph">
+<p>The result is written to <code>build/html5</code>.
+The HTML files need the images folder to be in the same directory to display correctly.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+If you would like to have a single-file HTML as result, you can configure AsciiDoctor to store the images inline as <code>data-uri</code>.<br>
+Just set <code>:data-uri:</code> in the config of your AsciiDoc file.<br>
+But be warned - such a file can be easily very big, and some browsers might get into trouble rendering them.<br>
+<a href="https://rdmueller.github.io/single-file-html/" class="bare">https://rdmueller.github.io/single-file-html/</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_text_based_diagrams">3.2.1. Text based Diagrams</h4>
+<div class="paragraph">
+<p>For docToolchain, it is configured to use the <a href="http://asciidoctor.org/docs/asciidoctor-diagram/">asciidoctor-diagram</a> plugin which is used to create PlantUML diagrams.</p>
+</div>
+<div class="paragraph">
+<p>The plugin also supports a bunch of other text based diagrams, but <a href="http://plantuml.com/">PlantUML</a> is the most used.</p>
+</div>
+<div class="paragraph">
+<p>To use it, just specify your PlantUML code like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.example diagram
+[plantuml, "{plantUMLDir}demoPlantUML", png] <b class="conum">(1)</b>
+----
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor &lt;|-- DiagramBlock
+DiagramBlock &lt;|-- DitaaBlock
+DiagramBlock &lt;|-- PlantUmlBlock
+----</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The element of this list specifies the diagram tool <code>plantuml</code> to be used.<br>
+The second element is the name of the image to be created and the third specifies the image type.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The <code>{plantUMLDir}</code> ensures that PlantUML also works for the <a href="#_generatepdf">generatePDF</a> task.
+Without it, <a href="#_generatehtml">generateHTML</a> works fine, but the PDF will not contain the generated images.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Make sure to specify a unique image name for each diagram, otherwise they will overwrite each other.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The above example renders as</p>
+</div>
+<div class="listingblock">
+<div class="title">example diagram</div>
+<div class="content">
+<pre>!pragma graphviz_dot jdot
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor &lt;|-- DiagramBlock
+DiagramBlock &lt;|-- DitaaBlock
+DiagramBlock &lt;|-- PlantUmlBlock</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to control the size of the generated diagram in the output, you can configure the "width" attribute (in pixels) or "scale" attribute (floating point ratio) passed to <a href="http://asciidoctor.org/docs/asciidoctor-diagram/">asciidoctor-diagram</a>.
+For example, if you take the example diagram above and change the declaration to one of the below versions</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[plantuml, target="{plantUMLDir}demoPlantUMLWidth", format=png, width=250]
+# rest of the diagram definition
+
+[plantuml, target="{plantUMLDir}demoPlantUMLScale", format=png, scale=0.75]
+# rest of the diagram definition</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>it will render like this:</p>
+</div>
+<div class="listingblock">
+<div class="title">example diagram (with specified width)</div>
+<div class="content">
+<pre>!pragma graphviz_dot jdot
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor &lt;|-- DiagramBlock
+DiagramBlock &lt;|-- DitaaBlock
+DiagramBlock &lt;|-- PlantUmlBlock</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">example diagram (with specified scale)</div>
+<div class="content">
+<pre>!pragma graphviz_dot jdot
+class BlockProcessor
+class DiagramBlock
+class DitaaBlock
+class PlantUmlBlock
+
+BlockProcessor &lt;|-- DiagramBlock
+DiagramBlock &lt;|-- DitaaBlock
+DiagramBlock &lt;|-- PlantUmlBlock</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+PlantUML needs Graphviz dot installed to work.
+If you can&#8217;t install it, you can use the Java based version of the dot library.
+Just add <code>!pragma graphviz_dot jdot</code> as the first line of your diagram definition.
+This is still an experimental feature, but already works quite well!<br>
+<a href="https://rdmueller.github.io/plantuml-without-graphviz/" class="bare">https://rdmueller.github.io/plantuml-without-graphviz/</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Posts: <a href="https://rdmueller.github.io/plantuml-gradle/">PlantUML with Gradle</a>, <a href="https://rdmueller.github.io/plantUML-and-pdf/">plantUML with Asciidoctor-pdf</a>, <a href="https://rdmueller.github.io/plantUML-revisited/">plantUML revisited</a>, <a href="https://rdmueller.github.io/plantuml-without-graphviz/">How to use PlantUML without Graphviz</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_source">3.2.2. Source</h4>
+<div class="listingblock">
+<div class="title">AsciiDocBasics.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task generateHTML (
+        type: AsciidoctorTask,
+        group: 'docToolchain',
+        description: 'use html5 as asciidoc backend') {
+
+    attributes \
+        'plantUMLDir'         : ''
+
+    onlyIf {
+        !sourceFiles.findAll {
+            'html' in it.formats
+        }.empty
+    }
+
+    sources {
+        sourceFiles.findAll {
+            'html' in it.formats
+        }.each {
+            include it.file
+        }
+    }
+
+    backends = ['html5']
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generatepdf">3.3. generatePDF</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_generatePDF.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/generatePDF.png" alt="generatePDF">
+</div>
+</div>
+<div class="paragraph">
+<p>This task makes use of the <a href="http://asciidoctor.org/docs/convert-asciidoc-to-pdf/">asciidoctor-pdf</a> plugin to render your documents as a pretty PDF file.</p>
+</div>
+<div class="paragraph">
+<p>The file will be written to <code>build/pdf</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the used plugin is still in alpha status, but the results are already quite good.
+If you want to use another way to create a PDF, use <a href="http://phantomjs.org/">PhantomJS</a> for instance and script it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The PDF is generated directly from your AsciiDoc sources without the need of an intermediate format or other tools.
+The result looks more like a nicely rendered book than a print-to-pdf HTML page.</p>
+</div>
+<div class="paragraph">
+<p>It is very likely that you need to "theme" you PDF - change colors, fonts, page header and footer.
+This can be done by changing the <code>pdfTheme/custom-theme.yml</code> file.
+Documentation on how to modify it can be found in the <a href="https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc">asciidoctor-pdf theming guide</a>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/pdf-output/">Beyond HTML</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_2">3.3.1. Source</h4>
+<div class="listingblock">
+<div class="title">AsciiDocBasics.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task generatePDF (
+        type: AsciidoctorTask,
+        group: 'docToolchain',
+        description: 'use pdf as asciidoc backend') {
+
+    attributes \
+        'plantUMLDir'         : file("${docDir}/${config.outputPath}/images/plantUML/").path
+
+    onlyIf {
+        !sourceFiles.findAll {
+            'pdf' in it.formats
+        }.empty
+    }
+
+    sources {
+        sourceFiles.findAll {
+            'pdf' in it.formats
+        }.each {
+            include it.file
+        }
+    }
+
+    backends = ['pdf']
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generatedocbook">3.4. generateDocbook</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_generateDocBook.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/generateDocBook.png" alt="generateDocBook">
+</div>
+</div>
+<div class="paragraph">
+<p>This is only a helper task - it generates the intermediate format for <a href="#_converttodocx">convertToDocx</a> and <a href="#_converttoepub">convertToEpub</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_source_3">3.4.1. Source</h4>
+<div class="listingblock">
+<div class="title">AsciiDocBasics.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task generateDocbook (
+        type: AsciidoctorTask,
+        group: 'docToolchain',
+        description: 'use docbook as asciidoc backend') {
+
+    onlyIf {
+        !sourceFiles.findAll {
+            'docbook' in it.formats
+        }.empty
+    }
+
+    sources {
+        sourceFiles.findAll {
+            'docbook' in it.formats
+        }.each {
+            include it.file
+        }
+    }
+
+    backends = ['docbook']
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generatedeck">3.5. generateDeck</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_generateDeck.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/generateDeck.png" alt="generateDeck">
+</div>
+</div>
+<div class="paragraph">
+<p>This task makes use of the <a href="https://github.com/asciidoctor/asciidoctor-reveal.js/">asciidoctor-reveal.js</a> backend to render your documents into a HTML based presentation.</p>
+</div>
+<div class="paragraph">
+<p>This task is best used together with the <a href="#_exportppt">exportPPT</a> task.
+Create a PowerPoint presentation and enrich it with reveal.js slide definitions in AsciiDoc within the speaker notes.</p>
+</div>
+<div class="sect3">
+<h4 id="_source_4">3.5.1. Source</h4>
+<div class="listingblock">
+<div class="title">AsciiDocBasics.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task generateDeck (
+        type: AsciidoctorTask,
+        group: 'docToolchain',
+        description: 'use revealJs as asciidoc backend to create a presentation') {
+
+    attributes \
+        'plantUMLDir'         : '',
+            'idprefix': 'slide-',
+            'idseparator': '-',
+            'docinfo1': '',
+            'revealjs_theme': 'black',
+            'revealjs_progress': 'true',
+            'revealjs_touch': 'true',
+            'revealjs_hideAddressBar': 'true',
+            'revealjs_transition': 'linear',
+            'revealjs_history': 'true',
+            'revealjs_slideNumber': 'true'
+
+    options template_dirs : [new File('resources/asciidoctor-reveal.js','templates/slim').absolutePath ]
+
+    onlyIf {
+        !sourceFiles.findAll {
+            'revealjs' in it.formats
+        }.empty
+    }
+
+    sources {
+        sourceFiles.findAll {
+            'revealjs' in it.formats
+        }.each {
+            include it.file
+        }
+
+    }
+
+    outputDir = file(targetDir+'/decks/')
+
+    resources {
+        from('resources') {
+            include 'reveal.js/**'
+        }
+        from(sourceDir) {
+            include 'images/**'
+        }
+        into("ppt")
+        logger.error "${docDir}/${config.outputPath}/ppt/images"
+    }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_publishtoconfluence">3.6. publishToConfluence</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_publishToConfluence.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/publishToConfluence.png" alt="publishToConfluence">
+</div>
+</div>
+<div class="sect3">
+<h4 id="_css_styling">3.6.1. CSS Styling</h4>
+<div class="paragraph">
+<p>Some AsciiDoctor features depend on particular CSS style definitions.
+Unless these styles are defined, some formatting that is present in the HTML version will not be represented when published to Confluence.</p>
+</div>
+<div class="olist arabic">
+<div class="title">To configure Confluence to include additional style definitions:</div>
+<ol class="arabic">
+<li>
+<p>Log in to Confluence as a space admin</p>
+</li>
+<li>
+<p>Go to the desired space</p>
+</li>
+<li>
+<p>Select "Space tools", "Look and Feel", "Stylesheet"</p>
+</li>
+<li>
+<p>Click "Edit", enter the desired style definitions, and click "Save"</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The default style definitions can be found in the AsciiDoc project as <a href="https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/data/stylesheets/asciidoctor-default.css">asciidoctor-default.css</a>.
+Note that you likely do <strong>NOT</strong> want to include the whole thing, as some of the definitions are likely to disrupt Confluence&#8217;s layout.</p>
+</div>
+<div class="paragraph">
+<p>The following style definitions are believed to be Confluence-compatible, and enable use of the built-in roles (<code>big</code>/<code>small</code>, <code>underline</code>/<code>overline</code>/<code>line-through</code>, <code><em>COLOR</em></code>/<code><em>COLOR</em>-background</code> for the <a href="http://en.wikipedia.org/wiki/Web_colors#HTML_color_names">sixteen HTML color names</a>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-css" data-lang="css">.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_source_5">3.6.2. Source</h4>
+<div class="listingblock">
+<div class="title">publishToConfluence.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task publishToConfluence(
+        description: 'publishes the HTML rendered output to confluence',
+        group: 'docToolchain'
+) {
+    doLast {
+        binding.setProperty('docDir', docDir)
+        binding.setProperty('confluenceConfigFile', confluenceConfigFile)
+        evaluate(new File('scripts/asciidoc2confluence.groovy'))
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">scripts/asciidoc2confluence.groovy</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">/**
+ * Created by Ralf D. Mueller and Alexander Heusingfeld
+ * https://github.com/rdmueller/asciidoc2confluence
+ *
+ * this script expects an HTML document created with AsciiDoctor
+ * in the following style (default AsciiDoctor output)
+ * &lt;div class="sect1"&gt;
+ *     &lt;h2&gt;Page Title&lt;/h2&gt;
+ *     &lt;div class="sectionbody"&gt;
+ *         &lt;div class="sect2"&gt;
+ *            &lt;h3&gt;Sub-Page Title&lt;/h3&gt;
+ *         &lt;/div&gt;
+ *         &lt;div class="sect2"&gt;
+ *            &lt;h3&gt;Sub-Page Title&lt;/h3&gt;
+ *         &lt;/div&gt;
+ *     &lt;/div&gt;
+ * &lt;/div&gt;
+ * &lt;div class="sect1"&gt;
+ *     &lt;h2&gt;Page Title&lt;/h2&gt;
+ *     ...
+ * &lt;/div&gt;
+ *
+ */
+
+// some dependencies
+/**
+@Grapes(
+        [@Grab('org.jsoup:jsoup:1.8.2'),
+         @Grab('org.codehaus.groovy.modules.http-builder:http-builder:0.6' ),
+         @Grab('org.apache.httpcomponents:httpmime:4.5.1')]
+)
+**/
+import org.jsoup.Jsoup
+import org.jsoup.parser.Parser
+import org.jsoup.nodes.Entities.EscapeMode
+import org.jsoup.nodes.Document
+import org.jsoup.nodes.Document.OutputSettings
+import org.jsoup.nodes.Element
+import org.jsoup.select.Elements
+import groovyx.net.http.RESTClient
+import groovyx.net.http.HttpResponseException
+import groovyx.net.http.HTTPBuilder
+import groovyx.net.http.EncoderRegistry
+import groovyx.net.http.ContentType
+import java.security.MessageDigest
+//to upload attachments:
+import org.apache.http.entity.mime.MultipartEntity
+import org.apache.http.entity.mime.content.StringBody
+import org.apache.http.entity.mime.content.InputStreamBody
+import org.apache.http.entity.mime.HttpMultipartMode
+import groovyx.net.http.Method
+
+def CDATA_PLACEHOLDER_START = '&lt;cdata-placeholder&gt;'
+def CDATA_PLACEHOLDER_END = '&lt;/cdata-placeholder&gt;'
+
+def baseUrl
+
+// configuration
+def config
+println "docDir: ${docDir}"
+println "confluenceConfigFile: ${confluenceConfigFile}"
+config = new ConfigSlurper().parse(new File(docDir, confluenceConfigFile).text)
+
+def confluenceSpaceKey
+def confluenceCreateSubpages
+def confluencePagePrefix
+
+// helper functions
+
+def MD5(String s) {
+    MessageDigest.getInstance("MD5").digest(s.bytes).encodeHex().toString()
+}
+
+// for getting better error message from the REST-API
+void trythis (Closure action) {
+    try {
+        action.run()
+    } catch (HttpResponseException error) {
+        println "something went wrong - got an http response code "+error.response.status+":"
+        println error.response.data
+        throw error
+    }
+}
+
+
+def parseAdmonitionBlock(block, String type) {
+    content = block.select(".content").first()
+    titleElement = content.select(".title")
+    titleText = ''
+    if(titleElement != null) {
+        titleText = "&lt;ac:parameter ac:name=\"title\"&gt;${titleElement.text()}&lt;/ac:parameter&gt;"
+        titleElement.remove()
+    }
+    block.after("&lt;ac:structured-macro ac:name=\"${type}\"&gt;${titleText}&lt;ac:rich-text-body&gt;${content}&lt;/ac:rich-text-body&gt;&lt;/ac:structured-macro&gt;")
+    block.remove()
+}
+
+def uploadAttachment = { def pageId, String url, String fileName, String note -&gt;
+    def is
+    def localHash
+    if (url.startsWith('http')) {
+        is = new URL(url).openStream()
+        //build a hash of the attachment
+        localHash = MD5(new URL(url).openStream().text)
+    } else {
+        is = new File(url).newDataInputStream()
+        //build a hash of the attachment
+        localHash = MD5(new File(url).newDataInputStream().text)
+    }
+
+    //https://docs.atlassian.com/confluence/REST/latest/
+    def api = new RESTClient(config.confluenceAPI)
+    //this fixes the encoding
+    api.encoderRegistry = new EncoderRegistry( charset: 'utf-8' )
+
+    def headers = [
+            'Authorization': 'Basic ' + config.confluenceCredentials,
+            'X-Atlassian-Token':'no-check'
+    ]
+    //check if attachment already exists
+    def result = "nothing"
+    def attachment = api.get(path: 'content/' + pageId + '/child/attachment',
+            query: [
+                    'filename': fileName,
+            ], headers: headers).data
+    def http
+    if (attachment.size==1) {
+        // attachment exists. need an update?
+        def remoteHash = attachment.results[0].extensions.comment.replaceAll("(?sm).*#([^#]+)#.*",'$1')
+        if (remoteHash!=localHash) {
+            //hash is different -&gt; attachment needs to be updated
+            http = new HTTPBuilder(config.confluenceAPI + 'content/' + pageId + '/child/attachment/' + attachment.results[0].id + '/data')
+            println "    updated attachment"
+        }
+    } else {
+        http = new HTTPBuilder(config.confluenceAPI + 'content/' + pageId + '/child/attachment')
+    }
+    if (http) {
+        http.request(Method.POST) { req -&gt;
+            requestContentType: "multipart/form-data"
+            MultipartEntity multiPartContent = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE)
+            // Adding Multi-part file parameter "file"
+            multiPartContent.addPart("file", new InputStreamBody(is, fileName))
+            // Adding another string parameter "comment"
+            multiPartContent.addPart("comment", new StringBody(note + "\r\n#" + localHash + "#"))
+            req.setEntity(multiPartContent)
+            headers.each { key, value -&gt;
+                req.addHeader(key, value)
+            }
+        }
+    }
+}
+
+
+def realTitle = { pageTitle -&gt;
+    confluencePagePrefix + pageTitle
+}
+
+def rewriteMarks = { body -&gt;
+    // Confluence strips out mark elements.  Replace them with default formatting.
+    body.select('mark').wrap('&lt;span style="background:#ff0;color:#000"&gt;&lt;/style&gt;').unwrap()
+}
+
+def rewriteDescriptionLists = { body -&gt;
+    def TAGS = [ dt: 'th', dd: 'td' ]
+    body.select('dl').each { dl -&gt;
+        // WHATWG allows wrapping dt/dd in divs, simply unwrap them
+        dl.select('div').each { it.unwrap() }
+
+        // group dts and dds that belong together, usually it will be a 1:1 relation
+        // but HTML allows for different constellations
+        def rows = []
+        def current = [dt: [], dd: []]
+        rows &lt;&lt; current
+        dl.select('dt, dd').each { child -&gt;
+            def tagName = child.tagName()
+            if (tagName == 'dt' &amp;&amp; current.dd.size() &gt; 0) {
+                // dt follows dd, start a new group
+                current = [dt: [], dd: []]
+                rows &lt;&lt; current
+            }
+            current[tagName] &lt;&lt; child.tagName(TAGS[tagName])
+            child.remove()
+        }
+
+        rows.each { row -&gt;
+            def sizes = [dt: row.dt.size(), dd: row.dd.size()]
+            def rowspanIdx = [dt: -1, dd: sizes.dd - 1]
+            def rowspan = Math.abs(sizes.dt - sizes.dd) + 1
+            def max = sizes.dt
+            if (sizes.dt &lt; sizes.dd) {
+                max = sizes.dd
+                rowspanIdx = [dt: sizes.dt - 1, dd: -1]
+            }
+            (0..&lt;max).each { idx -&gt;
+                def tr = dl.appendElement('tr')
+                ['dt', 'dd'].each { type -&gt;
+                    if (sizes[type] &gt; idx) {
+                        tr.appendChild(row[type][idx])
+                        if (idx == rowspanIdx[type] &amp;&amp; rowspan &gt; 1) {
+                            row[type][idx].attr('rowspan', "${rowspan}")
+                        }
+                    } else if (idx == 0) {
+                        tr.appendElement(TAGS[type]).attr('rowspan', "${rowspan}")
+                    }
+                }
+            }
+        }
+
+        dl.wrap('&lt;table&gt;&lt;/table&gt;')
+            .unwrap()
+    }
+}
+
+def rewriteInternalLinks = { body, anchors, pageAnchors -&gt;
+    // find internal cross-references and replace them with link macros
+    body.select('a[href]').each { a -&gt;
+        def href = a.attr('href')
+        if (href.startsWith('#')) {
+            def anchor = href.substring(1)
+            def pageTitle = anchors[anchor] ?: pageAnchors[anchor]
+            if (pageTitle) {
+                // as Confluence insists on link texts to be contained
+                // inside CDATA, we have to strip all HTML and
+                // potentially loose styling that way.
+                a.html(a.text())
+                a.wrap("&lt;ac:link${anchors.containsKey(anchor) ? ' ac:anchor="' + anchor + '"' : ''}&gt;&lt;/ac:link&gt;")
+                   .before("&lt;ri:page ri:content-title=\"${realTitle pageTitle}\"/&gt;")
+                   .wrap("&lt;ac:plain-text-link-body&gt;${CDATA_PLACEHOLDER_START}${CDATA_PLACEHOLDER_END}&lt;/ac:plain-text-link-body&gt;")
+                   .unwrap()
+            }
+        }
+    }
+}
+
+def rewriteCodeblocks = { body -&gt;
+    body.select('pre &gt; code').each { code -&gt;
+        if (code.attr('data-lang')) {
+            code.select('span[class]').each { span -&gt;
+                span.unwrap()
+            }
+            code.before("&lt;ac:parameter ac:name=\"language\"&gt;${code.attr('data-lang')}&lt;/ac:parameter&gt;")
+        }
+        code.parent() // pre now
+            .wrap('&lt;ac:structured-macro ac:name="code"&gt;&lt;/ac:structured-macro&gt;')
+            .unwrap()
+        code.wrap("&lt;ac:plain-text-body&gt;${CDATA_PLACEHOLDER_START}${CDATA_PLACEHOLDER_END}&lt;/ac:plain-text-body&gt;")
+            .unwrap()
+    }
+}
+
+def unescapeCDATASections = { html -&gt;
+    def start = html.indexOf(CDATA_PLACEHOLDER_START)
+    while (start &gt; -1) {
+        def end = html.indexOf(CDATA_PLACEHOLDER_END, start)
+        if (end &gt; -1) {
+            def prefix = html.substring(0, start) + CDATA_PLACEHOLDER_START
+            def suffix = html.substring(end)
+            def unescaped = html.substring(start + CDATA_PLACEHOLDER_START.length(), end)
+                    .replaceAll('&amp;lt;', '&lt;').replaceAll('&amp;gt;', '&gt;')
+                    .replaceAll('&amp;amp;', '&amp;')
+            html = prefix + unescaped + suffix
+        }
+        start = html.indexOf(CDATA_PLACEHOLDER_START, start + 1)
+    }
+    html
+}
+
+//modify local page in order to match the internal confluence storage representation a bit better
+//definition lists are not displayed by confluence, so turn them into tables
+//body can be of type Element or Elements
+def deferredUpload = []
+def parseBody =  { body, anchors, pageAnchors -&gt;
+    body.select('div.paragraph').unwrap()
+    body.select('div.ulist').unwrap()
+    body.select('div.sect3').unwrap()
+    [   'note':'info',
+        'warning':'warning',
+        'important':'warning',
+        'caution':'note',
+        'tip':'tip'            ].each { adType, cType -&gt;
+        body.select('.admonitionblock.'+adType).each { block -&gt;
+            parseAdmonitionBlock(block, cType)
+        }
+    }
+    //special for the arc42-template
+    body.select('div.arc42help').select('.content')
+            .wrap('&lt;ac:structured-macro ac:name="expand"&gt;&lt;/ac:structured-macro&gt;')
+            .wrap('&lt;ac:rich-text-body&gt;&lt;/ac:rich-text-body&gt;')
+            .wrap('&lt;ac:structured-macro ac:name="info"&gt;&lt;/ac:structured-macro&gt;')
+            .before('&lt;ac:parameter ac:name="title"&gt;arc42&lt;/ac:parameter&gt;')
+            .wrap('&lt;ac:rich-text-body&gt;&lt;p&gt;&lt;/p&gt;&lt;/ac:rich-text-body&gt;')
+    body.select('div.arc42help').unwrap()
+    body.select('div.title').wrap("&lt;strong&gt;&lt;/strong&gt;").before("&lt;br /&gt;").wrap("&lt;div&gt;&lt;/div&gt;")
+    body.select('div.listingblock').wrap("&lt;p&gt;&lt;/p&gt;").unwrap()
+    // see if we can find referenced images and fetch them
+    new File("tmp/images/.").mkdirs()
+    // find images, extract their URLs for later uploading (after we know the pageId) and replace them with this macro:
+    // &lt;ac:image ac:align="center" ac:width="500"&gt;
+    // &lt;ri:attachment ri:filename="deployment-context.png"/&gt;
+    // &lt;/ac:image&gt;
+    body.select('img').each { img -&gt;
+        img.attributes().each { attribute -&gt;
+            //println attribute.dump()
+        }
+        def src = img.attr('src')
+        def imgWidth = img.attr('width')?:500
+        def imgAlign = img.attr('align')?:"center"
+        println "    image: "+src
+
+        //it is not an online image, so upload it to confluence and use the ri:attachment tag
+        if(!src.startsWith("http")) {
+          def newUrl = baseUrl.toString().replaceAll('\\\\','/').replaceAll('/[^/]*$','/')+src
+          def fileName = (src.tokenize('/')[-1])
+
+          trythis {
+              deferredUpload &lt;&lt;  [0,newUrl,fileName,"automatically uploaded"]
+          }
+          img.after("&lt;ac:image ac:align=\"${imgAlign}\" ac:width=\"${imgWidth}\"&gt;&lt;ri:attachment ri:filename=\"${fileName}\"/&gt;&lt;/ac:image&gt;")
+        }
+        // it is an online image, so we have to use the ri:url tag
+        else {
+          img.after("&lt;ac:image ac:align=\"imgAlign\" ac:width=\"${imgWidth}\"&gt;&lt;ri:url ri:value=\"${src}\"/&gt;&lt;/ac:image&gt;")
+        }
+        img.remove()
+    }
+    rewriteMarks body
+    rewriteDescriptionLists body
+    rewriteInternalLinks body, anchors, pageAnchors
+    //sanitize code inside code tags
+    rewriteCodeblocks body
+    def pageString = unescapeCDATASections body.html().trim()
+
+    //change some html elements through simple substitutions
+    pageString = pageString
+            .replaceAll('&lt;br&gt;','&lt;br /&gt;')
+            .replaceAll('&lt;/br&gt;','&lt;br /&gt;')
+            .replaceAll('&lt;a([^&gt;]*)&gt;&lt;/a&gt;','')
+            .replaceAll(CDATA_PLACEHOLDER_START,'&lt;![CDATA[')
+            .replaceAll(CDATA_PLACEHOLDER_END,']]&gt;')
+
+    return pageString
+}
+
+// the create-or-update functionality for confluence pages
+def pushToConfluence = { pageTitle, pageBody, parentId, anchors, pageAnchors -&gt;
+    def api = new RESTClient(config.confluenceAPI)
+    def headers = [
+            'Authorization': 'Basic ' + config.confluenceCredentials,
+            'Content-Type':'application/json; charset=utf-8'
+    ]
+    //this fixes the encoding
+    api.encoderRegistry = new EncoderRegistry( charset: 'utf-8' )
+    //try to get an existing page
+    localPage = parseBody(pageBody, anchors, pageAnchors)
+
+    def localHash = MD5(localPage)
+    def prefix = '&lt;p&gt;&lt;ac:structured-macro ac:name="toc"/&gt;&lt;/p&gt;'+(config.extraPageContent?:'')
+    localPage  = prefix+localPage
+    localPage += '&lt;p&gt;&lt;ac:structured-macro ac:name="children"&gt;&lt;ac:parameter ac:name="sort"&gt;creation&lt;/ac:parameter&gt;&lt;/ac:structured-macro&gt;&lt;/p&gt;'
+    localPage += '&lt;p style="display:none"&gt;hash: #'+localHash+'#&lt;/p&gt;'
+
+    def request = [
+            type : 'page',
+            title: realTitle(pageTitle),
+            space: [
+                    key: confluenceSpaceKey
+            ],
+            body : [
+                    storage: [
+                            value         : localPage,
+                            representation: 'storage'
+                    ]
+            ]
+    ]
+    if (parentId) {
+        request.ancestors = [
+                [ type: 'page', id: parentId]
+        ]
+    }
+
+    def pages
+    trythis {
+        def cql = "space='${confluenceSpaceKey}' AND type=page AND title~'" + realTitle(pageTitle) + "'"
+        if (parentId) {
+            cql += " AND parent=${parentId}"
+        }
+        pages = api.get(path: 'content/search',
+                        query: ['cql' : cql,
+                                'expand'  : 'body.storage,version'
+                               ], headers: headers).data.results
+    }
+
+    def page = pages.find { p -&gt; p.title.equalsIgnoreCase(realTitle(pageTitle)) }
+
+    if (page) {
+        //println "found existing page: " + page.id +" version "+page.version.number
+
+        //extract hash from remote page to see if it is different from local one
+
+        def remotePage = page.body.storage.value.toString().trim()
+
+        def remoteHash = remotePage =~ /(?ms)hash: #([^#]+)#/
+        remoteHash = remoteHash.size()==0?"":remoteHash[0][1]
+
+        if (remoteHash == localHash) {
+            //println "page hasn't changed!"
+            deferredUpload.each {
+                uploadAttachment(page?.id, it[1], it[2], it[3])
+            }
+            deferredUpload = []
+            return page.id
+        } else {
+            trythis {
+                // update page
+                // https://developer.atlassian.com/display/CONFDEV/Confluence+REST+API+Examples#ConfluenceRESTAPIExamples-Updatingapage
+                request.id      = page.id
+                request.version = [number: (page.version.number as Integer) + 1]
+                def res = api.put(contentType: ContentType.JSON,
+                                  requestContentType : ContentType.JSON,
+                                  path: 'content/' + page.id, body: request, headers: headers)
+            }
+            println "&gt; updated page"+page.id
+            deferredUpload.each {
+                uploadAttachment(page.id, it[1], it[2], it[3])
+            }
+            deferredUpload = []
+            return page.id
+        }
+    } else {
+        if (parentId) {
+            def foreignPages
+            trythis {
+                def foreignCql = "space='${confluenceSpaceKey}' AND type=page AND title~'" + realTitle(pageTitle) + "'"
+                foreignPages = api.get(path: 'content/search',
+                                      query: ['cql' : foreignCql],
+                                    headers: headers).data.results
+            }
+
+            def foreignPage = foreignPages.find { p -&gt; p.title.equalsIgnoreCase(realTitle(pageTitle)) }
+
+            if (foreignPage) {
+                throw new IllegalArgumentException("Cannot create page, page with the same "
+                    + "title=${foreignPage.title} "
+                    + "and id=${foreignPage.id} already exists in the space")
+            }
+        }
+
+        //create a page
+        trythis {
+            page = api.post(contentType: ContentType.JSON,
+                            requestContentType: ContentType.JSON,
+                            path: 'content', body: request, headers: headers)
+        }
+        println "&gt; created page "+page?.data?.id
+        deferredUpload.each {
+            uploadAttachment(page?.data?.id, it[1], it[2], it[3])
+        }
+        deferredUpload = []
+        return page?.data?.id
+    }
+}
+
+def parseAnchors = { page -&gt;
+    def anchors = [:]
+    page.body.select('[id]').each { anchor -&gt;
+        def name = anchor.attr('id')
+        anchors[name] = page.title
+        anchor.before("&lt;ac:structured-macro ac:name=\"anchor\"&gt;&lt;ac:parameter ac:name=\"\"&gt;${name}&lt;/ac:parameter&gt;&lt;/ac:structured-macro&gt;")
+    }
+    anchors
+}
+
+def pushPages
+pushPages = { pages, anchors, pageAnchors -&gt;
+    pages.each { page -&gt;
+        println page.title
+        def id = pushToConfluence page.title, page.body, page.parent, anchors, pageAnchors
+        page.children*.parent = id
+        pushPages page.children, anchors, pageAnchors
+    }
+}
+
+def recordPageAnchor = { head -&gt;
+    def a = [:]
+    if (head.attr('id')) {
+        a[head.attr('id')] = head.text()
+    }
+    a
+}
+
+def promoteHeaders = { tree, start, offset -&gt;
+    (start..7).each { i -&gt;
+        tree.select("h${i}").tagName("h${i-offset}").before('&lt;br /&gt;')
+    }
+}
+
+config.input.each { input -&gt;
+
+    input.file = "${docDir}/${input.file}"
+
+    if (input.file ==~ /.*[.](ad|adoc|asciidoc)$/) {
+        println "convert ${input.file}"
+        "groovy asciidoc2html.groovy ${input.file}".execute()
+        input.file = input.file.replaceAll(/[.](ad|adoc|asciidoc)$/,'.html')
+        println "to ${input.file}"
+    }
+    confluenceSpaceKey = input.spaceKey?:config.confluenceSpaceKey
+    confluenceCreateSubpages = (input.createSubpages!= null)?input.createSubpages:config.confluenceCreateSubpages
+    confluencePagePrefix = input.pagePrefix?:config.confluencePagePrefix
+
+    def html =input.file?new File(input.file).getText('utf-8'):new URL(input.url).getText()
+    baseUrl  =input.file?new File(input.file):new URL(input.url)
+    Document dom = Jsoup.parse(html, 'utf-8', Parser.xmlParser())
+    dom.outputSettings().prettyPrint(false);//makes html() preserve linebreaks and spacing
+    dom.outputSettings().escapeMode(org.jsoup.nodes.Entities.EscapeMode.xhtml); //This will ensure xhtml validity regarding entities
+    dom.outputSettings().charset("UTF-8"); //does no harm :-)
+    def masterid = input.ancestorId
+
+    // if confluenceAncestorId is not set, create a new parent page
+    def parentId = !input.ancestorId ? null : input.ancestorId
+    def anchors = [:]
+    def pageAnchors = [:]
+    def sections = pages = []
+
+    // let's try to select the "first page" and push it to confluence
+    dom.select('div#preamble div.sectionbody').each { pageBody -&gt;
+        pageBody.select('div.sect2').unwrap()
+        def preamble = [
+            title: input.preambleTitle ?: "arc42",
+            body: pageBody,
+            children: [],
+            parent: parentId
+        ]
+        pages &lt;&lt; preamble
+        sections = preamble.children
+        parentId = null
+        anchors.putAll(parseAnchors(preamble))
+    }
+    // &lt;div class="sect1"&gt; are the main headings
+    // let's extract these
+    dom.select('div.sect1').each { sect1 -&gt;
+        Elements pageBody = sect1.select('div.sectionbody')
+        def currentPage = [
+            title: sect1.select('h2').text(),
+            body: pageBody,
+            children: [],
+            parent: parentId
+        ]
+        pageAnchors.putAll(recordPageAnchor(sect1.select('h2')))
+
+        if (confluenceCreateSubpages) {
+            pageBody.select('div.sect2').each { sect2 -&gt;
+                def title = sect2.select('h3').text()
+                pageAnchors.putAll(recordPageAnchor(sect2.select('h3')))
+                sect2.select('h3').remove()
+                def body = sect2
+                def subPage = [
+                    title: title,
+                    body: body
+                ]
+                currentPage.children &lt;&lt; subPage
+                promoteHeaders sect2, 4, 3
+                anchors.putAll(parseAnchors(subPage))
+            }
+            pageBody.select('div.sect2').remove()
+        } else {
+            pageBody.select('div.sect2').unwrap()
+            promoteHeaders sect1, 3, 2
+        }
+        sections &lt;&lt; currentPage
+        anchors.putAll(parseAnchors(currentPage))
+    }
+
+    pushPages pages, anchors, pageAnchors
+}
+""</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_converttodocx">3.7. convertToDocx</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_convertToDocx.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/convertToDocx.png" alt="convertToDocx">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/create-docx/">Render AsciiDoc to docx (MS Word)</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_6">3.7.1. Source</h4>
+<div class="listingblock">
+<div class="title">pandoc.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task convertToDocx (
+        group: 'docToolchain',
+        description: 'converts file to .docx via pandoc. Needs pandoc installed.',
+        type: Exec
+) {
+    // All files with option `docx` in config.groovy is converted to docbook and then to docx.
+    def sourceFilesDocx = sourceFiles.findAll { 'docx' in it.formats }
+    sourceFilesDocx.each {
+        def sourceFile = it.file.replace('.adoc', '.xml')
+        def targetFile = sourceFile.replace('.xml', '.docx')
+
+        workingDir "$targetDir/docbook"
+        executable = "pandoc"
+        new File("$targetDir/docx/").mkdirs()
+        args = ['-r','docbook',
+                '-t','docx',
+                '-o',"../docx/$targetFile",
+                sourceFile]
+        }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_converttoepub">3.8. convertToEpub</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_convertToEpub.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/convertToEpub.png" alt="convertToEpub">
+</div>
+</div>
+<div class="paragraph">
+<p>Dependency: <a href="#generateDocBook">[generateDocBook]</a></p>
+</div>
+<div class="paragraph">
+<p>This task uses <a href="http://pandoc.org">pandoc</a> to convert the DocBook output from AsciiDoctor to ePub.
+This way, you can read your documentation in a convenient way on an eBook-reader.</p>
+</div>
+<div class="paragraph">
+<p>Result can be found in <code>build/epub</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/create-epub/">Turn your Document into an Audio-Book</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_7">3.8.1. Source</h4>
+<div class="listingblock">
+<div class="title">pandoc.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task convertToEpub (
+        group: 'docToolchain',
+        description: 'converts file to .epub via pandoc. Needs pandoc installed.',
+        type: Exec
+) {
+    // All files with option `epub` in config.groovy is converted to docbook and then to epub.
+    def sourceFilesEpub = sourceFiles.findAll { 'epub' in it.formats }
+    sourceFilesEpub.each {
+        def sourceFile = it.file.replace('.adoc', '.xml')
+        def targetFile = sourceFile.replace('.xml', '.epub')
+
+        workingDir "$targetDir/docbook"
+        executable = "pandoc"
+        new File("$targetDir/epub/").mkdirs()
+        args = ['-r','docbook',
+                '-t','epub',
+                '-o',"../epub/$targetFile",
+                sourceFile]
+
+    }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportea">3.9. exportEA</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_exportEA.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/exportEA.png" alt="exportEA">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Posts: <a href="https://rdmueller.github.io/jria2eac/">JIRA to Sparx EA</a>, <a href="https://rdmueller.github.io/sparx-ea/">Did you ever wish you had better Diagrams?</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_8">3.9.1. Source</h4>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportEA(
+        dependsOn: [streamingExecute],
+        description: 'exports all diagrams and some texts from EA files',
+        group: 'docToolchain'
+) {
+    doFirst {
+        //make sure path for notes exists
+        //and remove old notes
+        new File('src/docs/ea').deleteDir()
+        //also remove old diagrams
+        new File('src/docs/images/ea').deleteDir()
+        //create a readme to clarify things
+        def readme = """This folder contains exported diagrams or notes from Enterprise Architect.
+
+Please note that these are generated files but reside in the `src`-folder in order to be versioned.
+
+This is to make sure that they can be used from environments other than windows.
+
+# Warning!
+
+**The contents of this folder	will be overwritten with each re-export!**
+
+use `gradle exportEA` to re-export files
+"""
+        new File('src/docs/images/ea/.').mkdirs()
+        new File('src/docs/images/ea/readme.ad').write(readme)
+        new File('src/docs/ea/.').mkdirs()
+        new File('src/docs/ea/readme.ad').write(readme)
+    }
+    doLast {
+        //execute through cscript in order to make sure that we get WScript.echo right
+        "%SystemRoot%\\System32\\cscript.exe //nologo scripts/exportEAP.vbs".executeCmd()
+        //the VB Script is only capable of writing iso-8859-1-Files.
+        //we now have to convert them to UTF-8
+        new File('src/docs/ea/.').eachFileRecurse { file -&gt;
+            if (file.isFile()) {
+                println "exported notes " + file.canonicalPath
+                file.write(file.getText('iso-8859-1'), 'utf-8')
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">scripts/exportEAP.vbs</div>
+<div class="content">
+<pre class="highlight"><code>    ' based on the "Project Interface Example" which comes with EA
+    ' http://stackoverflow.com/questions/1441479/automated-method-to-export-enterprise-architect-diagrams
+
+    Dim EAapp 'As EA.App
+    Dim Repository 'As EA.Repository
+    Dim FS 'As Scripting.FileSystemObject
+
+    Dim projectInterface 'As EA.Project
+
+    Const   ForAppending = 8
+
+    ' Helper
+    ' http://windowsitpro.com/windows/jsi-tip-10441-how-can-vbscript-create-multiple-folders-path-mkdir-command
+    Function MakeDir (strPath)
+      Dim strParentPath, objFSO
+      Set objFSO = CreateObject("Scripting.FileSystemObject")
+      On Error Resume Next
+      strParentPath = objFSO.GetParentFolderName(strPath)
+
+      If Not objFSO.FolderExists(strParentPath) Then MakeDir strParentPath
+      If Not objFSO.FolderExists(strPath) Then objFSO.CreateFolder strPath
+      On Error Goto 0
+      MakeDir = objFSO.FolderExists(strPath)
+
+    End Function
+
+    Sub WriteNote(currentModel, currentElement, notes, prefix)
+        If (Left(notes, 6) = "{adoc:") Then
+            strFileName = Mid(notes,7,InStr(notes,"}")-7)
+            strNotes = Right(notes,Len(notes)-InStr(notes,"}"))
+            set objFSO = CreateObject("Scripting.FileSystemObject")
+            If (currentModel.Name="Model") Then
+              ' When we work with the default model, we don't need a sub directory
+              path = "./src/docs/ea/"
+            Else
+              path = "./src/docs/ea/"&amp;currentModel.Name&amp;"/"
+            End If
+            MakeDir(path)
+            ' WScript.echo path&amp;strFileName
+            post = ""
+            If (prefix&lt;&gt;"") Then
+                post = "_"
+            End If
+            set objFile = objFSO.OpenTextFile(path&amp;prefix&amp;post&amp;strFileName&amp;".ad",ForAppending, True)
+            name = currentElement.Name
+            name = Replace(name,vbCr,"")
+            name = Replace(name,vbLf,"")
+            ' WScript.echo "-"&amp;Left(strNotes, 6)&amp;"-"
+            if (Left(strNotes, 3) = vbCRLF&amp;"|") Then
+                ' content should be rendered as table - so don't interfere with it
+                objFile.WriteLine(vbCRLF)
+            else
+                'let's add the name of the object
+                objFile.WriteLine(vbCRLF&amp;vbCRLF&amp;"."&amp;name)
+            End If
+            objFile.WriteLine(vbCRLF&amp;strNotes)
+            objFile.Close
+            if (prefix&lt;&gt;"") Then
+                ' write the same to a second file
+                set objFile = objFSO.OpenTextFile(path&amp;prefix&amp;".ad",ForAppending, True)
+                objFile.WriteLine(vbCRLF&amp;vbCRLF&amp;"."&amp;name&amp;vbCRLF&amp;strNotes)
+                objFile.Close
+            End If
+        End If
+    End Sub
+
+    Sub SyncJira(currentModel, currentDiagram)
+        notes = currentDiagram.notes
+        set currentPackage = Repository.GetPackageByID(currentDiagram.PackageID)
+        updated = 0
+        created = 0
+        If (Left(notes, 6) = "{jira:") Then
+            WScript.echo " &gt;&gt;&gt;&gt; Diagram jira tag found"
+            strSearch = Mid(notes,7,InStr(notes,"}")-7)
+            Set objShell = CreateObject("WScript.Shell")
+            'objShell.CurrentDirectory = fso.GetFolder("./scripts")
+            Set objExecObject = objShell.Exec ("cmd /K  groovy ./scripts/exportJira.groovy """ &amp; strSearch &amp;""" &amp; exit")
+            strReturn = ""
+            x = 0
+            y = 0
+            Do While Not objExecObject.StdOut.AtEndOfStream
+                output = objExecObject.StdOut.ReadLine()
+                ' WScript.echo output
+                jiraElement = Split(output,"|")
+                name = jiraElement(0)&amp;":"&amp;vbCR&amp;vbLF&amp;jiraElement(4)
+                On Error Resume Next
+                Set requirement = currentPackage.Elements.GetByName(name)
+                On Error Goto 0
+                if (IsObject(requirement)) then
+                    ' element already exists
+                    requirement.notes = ""
+                    requirement.notes = requirement.notes&amp;"&lt;a href='"&amp;jiraElement(5)&amp;"'&gt;"&amp;jiraElement(0)&amp;"&lt;/a&gt;"&amp;vbCR&amp;vbLF
+                    requirement.notes = requirement.notes&amp;"Priority: "&amp;jiraElement(1)&amp;vbCR&amp;vbLF
+                    requirement.notes = requirement.notes&amp;"Created: "&amp;jiraElement(2)&amp;vbCR&amp;vbLF
+                    requirement.notes = requirement.notes&amp;"Assignee: "&amp;jiraElement(3)&amp;vbCR&amp;vbLF
+                    requirement.Update()
+                    updated = updated + 1
+                else
+                    Set requirement = currentPackage.Elements.AddNew(name,"Requirement")
+                    requirement.notes = ""
+                    requirement.notes = requirement.notes&amp;"&lt;a href='"&amp;jiraElement(5)&amp;"'&gt;"&amp;jiraElement(0)&amp;"&lt;/a&gt;"&amp;vbCR&amp;vbLF
+                    requirement.notes = requirement.notes&amp;"Priority: "&amp;jiraElement(1)&amp;vbCR&amp;vbLF
+                    requirement.notes = requirement.notes&amp;"Created: "&amp;jiraElement(2)&amp;vbCR&amp;vbLF
+                    requirement.notes = requirement.notes&amp;"Assignee: "&amp;jiraElement(3)&amp;vbCR&amp;vbLF
+                    requirement.Update()
+                    currentPackage.Elements.Refresh()
+                    Set dia_obj = currentDiagram.DiagramObjects.AddNew("l="&amp;(10+x*200)&amp;";t="&amp;(10+y*50)&amp;";b="&amp;(10+y*50+44)&amp;";r="&amp;(10+x*200+180),"")
+                    x = x + 1
+                    if (x&gt;3) then
+                      x = 0
+                      y = y + 1
+                    end if
+                    dia_obj.ElementID = requirement.ElementID
+                    dia_obj.Update()
+                    created = created + 1
+                end if
+            Loop
+            Set objShell = Nothing
+            WScript.echo "created "&amp;created&amp;" requirements"
+            WScript.echo "updated "&amp;updated&amp;" requirements"
+        End If
+    End Sub
+
+    Sub SaveDiagram(currentModel, currentDiagram)
+                ' Open the diagram
+            Repository.OpenDiagram(currentDiagram.DiagramID)
+
+            ' Save and close the diagram
+            If (currentModel.Name="Model") Then
+                ' When we work with the default model, we don't need a sub directory
+                path = "/src/docs/images/ea/"
+            Else
+                path = "/src/docs/images/ea/" &amp; currentModel.Name &amp; "/"
+            End If
+            diagramName = Replace(currentDiagram.Name," ","_")
+            diagramName = Replace(diagramName,vbCr,"")
+            diagramName = Replace(diagramName,vbLf,"")
+            filename = path &amp; diagramName &amp; ".png"
+            MakeDir("." &amp; path)
+            projectInterface.SaveDiagramImageToFile(fso.GetAbsolutePathName(".")&amp;filename)
+            ' projectInterface.putDiagramImageToFile currentDiagram.DiagramID,fso.GetAbsolutePathName(".")&amp;filename,1
+            WScript.echo " extracted image to ." &amp; filename
+            Repository.CloseDiagram(currentDiagram.DiagramID)
+            For Each diagramElement In currentDiagram.DiagramObjects
+                Set currentElement = Repository.GetElementByID(diagramElement.ElementID)
+                WriteNote currentModel, currentElement, currentElement.Notes, diagramName&amp;"_notes"
+            Next
+            For Each diagramLink In currentDiagram.DiagramLinks
+                set currentConnector = Repository.GetConnectorByID(diagramLink.ConnectorID)
+                WriteNote currentModel, currentConnector, currentConnector.Notes, diagramName&amp;"_links"
+            Next
+    End Sub
+    '
+    ' Recursively saves all diagrams under the provided package and its children
+    '
+    Sub DumpDiagrams(thePackage,currentModel)
+
+        Set currentPackage = thePackage
+
+        ' export element notes
+        For Each currentElement In currentPackage.Elements
+            WriteNote currentModel, currentElement, currentElement.Notes, ""
+            ' export connector notes
+            For Each currentConnector In currentElement.Connectors
+                ' WScript.echo currentConnector.ConnectorGUID
+                if (currentConnector.ClientID=currentElement.ElementID) Then
+                    WriteNote currentModel, currentConnector, currentConnector.Notes, ""
+                End If
+            Next
+            if (Not currentElement.CompositeDiagram Is Nothing) Then
+                SyncJira currentModel, currentElement.CompositeDiagram
+                SaveDiagram currentModel, currentElement.CompositeDiagram
+            End If
+            if (Not currentElement.Elements Is Nothing) Then
+                DumpDiagrams currentElement,currentModel
+            End If
+        Next
+
+
+        ' Iterate through all diagrams in the current package
+        For Each currentDiagram In currentPackage.Diagrams
+            SyncJira currentModel, currentDiagram
+            SaveDiagram currentModel, currentDiagram
+        Next
+
+        ' Process child packages
+        Dim childPackage 'as EA.Package
+        ' otPackage = 5
+        if (currentPackage.ObjectType = 5) Then
+            For Each childPackage In currentPackage.Packages
+                call DumpDiagrams(childPackage, currentModel)
+            Next
+        End If
+    End Sub
+
+		Function SearchEAProjects(path)
+
+		  For Each folder In path.SubFolders
+		    SearchEAProjects folder
+		  Next
+
+		  For Each file In path.Files
+				If fso.GetExtensionName (file.Path) = "eap" Then
+					WScript.echo "found "&amp;file.path
+					OpenProject(file.Path)
+				End If
+		  Next
+
+    End Function
+
+    Sub OpenProject(file)
+      ' open Enterprise Architect
+      Set EAapp = CreateObject("EA.App")
+      WScript.echo "opening Enterprise Architect. This might take a moment..."
+      ' load project
+      EAapp.Repository.OpenFile(file)
+      ' make Enterprise Architect to not appear on screen
+      EAapp.Visible = False
+
+      ' get repository object
+      Set Repository = EAapp.Repository
+      ' Show the script output window
+      ' Repository.EnsureOutputVisible("Script")
+
+      Set projectInterface = Repository.GetProjectInterface()
+
+      ' Iterate through all model nodes
+      Dim currentModel 'As EA.Package
+      For Each currentModel In Repository.Models
+        ' Iterate through all child packages and save out their diagrams
+        Dim childPackage 'As EA.Package
+        For Each childPackage In currentModel.Packages
+          call DumpDiagrams(childPackage,currentModel)
+        Next
+      Next
+      EAapp.Repository.CloseFile()
+    End Sub
+
+  set fso = CreateObject("Scripting.fileSystemObject")
+  WScript.echo "Image extractor"
+  WScript.echo "looking for .eap files in " &amp; fso.GetAbsolutePathName(".") &amp; "/src"
+  'Dim f As Scripting.Files
+  SearchEAProjects fso.GetFolder("./src")
+  WScript.echo "finished exporting images"</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportvisio">3.10. exportVisio</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_exportVisio.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/exportVisio.png" alt="exportVisio">
+</div>
+</div>
+<div class="paragraph">
+<p>This tasks searches for Visio files in the <code>/src/docs</code> folder.
+It then exports all diagrams and element notes to <code>/src/docs/images/visio</code> and <code>/src/docs/visio</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Images are stored as <code>/images/visio/[filename]-[pagename].png</code></p>
+</li>
+<li>
+<p>Notes are stored as <code>/visio/[filename]-[pagename].adoc</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can specify a file name to which the notes of a diagram are exported by starting any comment with {adoc:[filename].adoc}`. It will then be written to <code>/viso/[filename].adoc</code>.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Currently, only Visio files stored directly in <code>/src/docs</code> are supported. For all others, the exported files will be in the wrong location.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Please close any running Visio instance before starting this task.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Todos: <a href="https://github.com/docToolchain/docToolchain/issues/112">issue #112</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_9">3.10.1. Source</h4>
+<div class="listingblock">
+<div class="title">exportVisio.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportVisio(
+        dependsOn: [streamingExecute],
+        description: 'exports all diagrams and notes from visio files',
+        group: 'docToolchain'
+) {
+    doLast {
+        //make sure path for notes exists
+        //and remove old notes
+        new File('src/docs/visio').deleteDir()
+        //also remove old diagrams
+        new File('src/docs/images/visio').deleteDir()
+        //create a readme to clarify things
+        def readme = """This folder contains exported diagrams and notes from visio files.
+
+Please note that these are generated files but reside in the `src`-folder in order to be versioned.
+
+This is to make sure that they can be used from environments other than windows.
+
+# Warning!
+
+**The contents of this folder	will be overwritten with each re-export!**
+
+use `gradle exportVisio` to re-export files
+"""
+        new File('src/docs/images/visio/.').mkdirs()
+        new File('src/docs/images/visio/readme.ad').write(readme)
+        new File('src/docs/visio/.').mkdirs()
+        new File('src/docs/visio/readme.ad').write(readme)
+        def sourcePath = new File('src/docs/.').canonicalPath
+        def scriptPath = new File('scripts/VisioPageToPngConverter.ps1').canonicalPath
+        "powershell ${scriptPath} -SourcePath ${sourcePath}".executeCmd()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">scripts/VisioPageToPngConverter.ps1</div>
+<div class="content">
+<pre class="highlight"><code># Convert all pages in all visio files in the given directory to png files.
+# A Visio windows might flash shortly.
+# The converted png files are stored in the same directory
+# The name of the png file is concatenated from the Visio file name and the page name.
+# In addtion all the comments are stored in adoc files.
+# If the Viso file is named "MyVisio.vsdx" and the page is called "FirstPage"
+# the name of the png file will be "MyVisio-FirstPage.png" and the comment will
+# be stored in "MyVisio-FirstPage.adoc".
+# But for the name of the adoc files there is an alternative. It can be given in the first
+# line of the comment. If it is given in the comment it has to be given in curly brackes
+# with the prefix "adoc:", e.g. {adoc:MyCommentFile.adoc}
+# Prerequisites: Viso and PowerShell has to be installed on the computer.
+# Parameter: SourcePath where visio files can be found
+# Example powershell VisoPageToPngConverter.ps1 -SourcePath c:\convertertest\
+
+Param
+(
+    [Parameter(Mandatory=$true,ValueFromPipeline=$true,Position=0)]
+    [Alias('p')][String]$SourcePath
+)
+
+
+If (!(Test-Path -Path $SourcePath))
+{
+    Write-Warning "The path ""$SourcePath"" does not exist or is not accessible, please input the correct path."
+    Exit
+}
+
+# Extend the source path to get only Visio files of the given directory and not in subdircetories
+If ($SourcePath.EndsWith("\"))
+{
+    $SourcePath  = "$SourcePath*"
+}
+Else
+{
+    $SourcePath  = "$SourcePath\*"
+}
+
+$VisioFiles = Get-ChildItem -Path $SourcePath -Include *.vsdx,*.vssx,*.vstx,*.vxdm,*.vssm,*.vstm,*.vsd,*.vdw,*.vss,*.vst
+
+If(!($VisioFiles))
+{
+    Write-Warning "There are no Visio files in the path ""$SourcePath""."
+    Exit
+}
+
+$VisioApp = New-Object -ComObject Visio.Application
+$VisioApp.Visible = $false
+
+# Extract the png from all the files in the folder
+Foreach($File in $VisioFiles)
+{
+    $FilePath = $File.FullName
+               $FileDirectory = $File.DirectoryName   # Get the folder containing the Visio file. Will be used to store the png and adoc files
+    $FileBaseName = $File.BaseName    # Get the filename to be used as part of the name of the png and adoc files
+
+    Try
+    {
+        $Document = $VisioApp.Documents.Open($FilePath)
+        $Pages = $VisioApp.ActiveDocument.Pages
+        Foreach($Page in $Pages)
+        {
+            # Create valid filenames for the png and adoc files
+            $PngFileName = $Page.Name -replace '[:/\\*?|&lt;&gt;]','-'
+            $PngFileName = "$FileBaseName-$PngFileName.png"
+            $AdocFileName = $PngFileName.Replace(".png", ".adoc")
+
+            #TODO: this needs better logic
+            $Page.Export("$FileDirectory\images\visio\$PngFileName")
+
+            $AllPageComments = ""
+            ForEach($PageComment in $Page.Comments)
+            {
+                # Extract adoc filename from comment text if the syntax is valid
+                # Remove the filename from the text and save the comment in a file with a valid name
+                $EofStringIndex = $PageComment.Text.IndexOf(".adoc}")
+                if ($PageComment.Text.StartsWith("{adoc") -And ($EofStringIndex -gt 6))
+                {
+                    $AdocFileName = $PageComment.Text.Substring(6, $EofStringIndex -1)
+                    $AllPageComments += $PageComment.Text.Substring($EofStringIndex + 6)
+                }
+                else
+                {
+                    $AllPageComments += $PageComment.Text+"`n"
+                }
+            }
+            If ($AllPageComments)
+            {
+
+                $AdocFileName = $AdocFileName -replace '[:/\\*?|&lt;&gt;]','-'
+                #TODO: this needs better logic
+                $stream = [System.IO.StreamWriter] "$FileDirectory\visio\$AdocFileName"
+                $stream.WriteLine($AllPageComments)
+                $stream.close()
+            }
+        }
+        $Document.Close()
+    }
+    Catch
+    {
+        if ($Document)
+        {
+            $Document.Close()
+        }
+        Write-Warning "One or more visio page(s) in file ""$FilePath"" have been lost in this converting."
+        Write-Warning "Error was: $_"
+    }
+}
+$VisioApp.Quit()</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportchangelog">3.11. exportChangeLog</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_exportChangeLog.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/exportChangeLog.png" alt="exportChangeLog">
+</div>
+</div>
+<div class="paragraph">
+<p>As the name says, this task exports the changelog to be referenced from within your documentation - if needed.
+The changelog is written to <code>build/docs/changelog.adoc</code>.</p>
+</div>
+<div class="paragraph">
+<p>This task can be configured to use different source control system or different directory.
+To configure the task, copy <code>template_config/scripts/ChangelogConfig.groovy</code> to your directory and modify to your needs.
+Then give the path to your configuration file to the task using -PchangelogConfigFile=&lt;your config file&gt;.
+See the description inside the template for more details.</p>
+</div>
+<div class="paragraph">
+<p>By default, the source is the Git changelog for the path <code>src/docs</code> - it only contains the commit messages for changes on the documentation.
+All changes on the build or other sources from the repository will not show up.
+By default, the changelog contains the changes with <em>date</em>, <em>author</em> and <em>commit message</em> already formatted as AsciiDoc table content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>| 09.04.2017
+| Ralf D. Mueller
+| fix #24 template updated to V7.0
+
+| 08.04.2017
+| Ralf D. Mueller
+| fixed typo</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You simply include it like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>.Changes
+[options="header",cols="1,2,6"]
+|====
+| Date
+| Author
+| Comment
+
+include::../../build/docs/changelog.adoc[]
+
+|====</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By excluding the table definition, you can easily translate the table headings through different text snippets.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+it might make sense to only include certain commit messages from the change log or exclude others (starting with <code>#</code> or <code>//</code>?).
+But this isn&#8217;t implemented yet.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/changelog/">The only constant in life is change</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_10">3.11.1. Source</h4>
+<div class="listingblock">
+<div class="title">exportChangelog.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportChangeLog(
+        description: 'exports the change log from a git subpath',
+        group: 'docToolchain'
+) {
+    doFirst {
+        new File(targetDir).mkdirs()
+    }
+    doLast {
+        println "changelogConfigFile: ${changelogConfigFile}"
+        def config
+        config = new ConfigSlurper().parse(new File(docDir, changelogConfigFile).text)
+
+        def cmd = "${config.changelogCmd} ."
+        def changes = cmd.execute(null, new File(docDir, config.changelogDir)).text
+        def changelog = new File(targetDir, 'changelog.adoc')
+        logger.info "&gt; changelog exported ${changelog.canonicalPath}"
+        changelog.write(changes)
+    }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportjiraissues">3.12. exportJiraIssues</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_exportJiraIssues.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/exportJiraIssues.png" alt="exportJiraIssues">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/Jira/">Living Documents for Agile Projects</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_11">3.12.1. Source</h4>
+<div class="listingblock">
+<div class="title">exportJiraIssues.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportJiraIssues(
+        description: 'exports all jira issues from a given search',
+        group: 'docToolchain'
+) {
+    doLast {
+        def user = jiraUser
+        def pass = jiraPass
+        if (!pass) {
+            pass = System.console().readPassword("Jira password for user '$user': ")
+        }
+
+        def stats = [:]
+        def jira = new groovyx.net.http.RESTClient(jiraRoot + '/rest/api/2/')
+        jira.encoderRegistry = new groovyx.net.http.EncoderRegistry(charset: 'utf-8')
+        def headers = [
+                'Authorization': "Basic " + "${user}:${pass}".bytes.encodeBase64().toString(),
+                'Content-Type' : 'application/json; charset=utf-8'
+        ]
+        def openIssues = new File(targetDir, 'openissues.adoc')
+        openIssues.write("", 'utf-8')
+        println jiraJql.replaceAll('%jiraProject%', jiraProject).replaceAll('%jiraLabel%', jiraLabel)
+        jira.get(path: 'search',
+                query: ['jql'       : jiraJql.replaceAll('%jiraProject%', jiraProject).replaceAll('%jiraLabel%', jiraLabel),
+                        'maxResults': 1000,
+                        'fields'    : 'created,resolutiondate,priority,summary,timeoriginalestimate, assignee'
+                ],
+                headers: headers
+        ).data.issues.each { issue -&gt;
+            openIssues.append("| &lt;&lt;${issue.key}&gt;&gt; ", 'utf-8')
+            openIssues.append("| ${issue.fields.priority.name} ", 'utf-8')
+            openIssues.append("| ${Date.parse("yyyy-MM-dd'T'H:m:s.000z", issue.fields.created).format('dd.MM.yy')} ", 'utf-8')
+            openIssues.append("| ${issue.fields.assignee ? issue.fields.assignee.displayName : 'not assigned'} ", 'utf-8')
+            openIssues.append("| ${jiraRoot}/browse/${issue.key}[${issue.fields.summary}]\n", 'utf-8')
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportppt">3.13. exportPPT</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_exportPPT.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/exportPPT.png" alt="exportPPT">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/PPT-as-asciidoc-editor/">Do more with Slides</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_12">3.13.1. Source</h4>
+<div class="listingblock">
+<div class="title">exportPPT.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportPPT(
+        dependsOn: [streamingExecute],
+        description: 'exports all slides and some texts from PPT files',
+        group: 'docToolchain'
+) {
+    doLast {
+        //make sure path for notes exists
+        //and remove old notes
+        new File('src/docs/ppt').deleteDir()
+        //also remove old diagrams
+        new File('src/docs/images/ppt').deleteDir()
+        //create a readme to clarify things
+        def readme = """This folder contains exported slides or notes from .ppt presentations.
+
+Please note that these are generated files but reside in the `src`-folder in order to be versioned.
+
+This is to make sure that they can be used from environments other than windows.
+
+# Warning!
+
+**The contents of this folder	will be overwritten with each re-export!**
+
+use `gradle exportPPT` to re-export files
+"""
+        new File('src/docs/images/ppt/.').mkdirs()
+        new File('src/docs/images/ppt/readme.ad').write(readme)
+        new File('src/docs/ppt/.').mkdirs()
+        new File('src/docs/ppt/readme.ad').write(readme)
+        //execute through cscript in order to make sure that we get WScript.echo right
+        "%SystemRoot%\\System32\\cscript.exe //nologo scripts/exportPPT.vbs".executeCmd()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">exportPPT.vbs</div>
+<div class="content">
+<pre class="highlight"><code class="language-vbs" data-lang="vbs">    Const   ForAppending = 8
+    Const   ppPlaceholderBody = 2
+
+    ' Helper
+    ' http://windowsitpro.com/windows/jsi-tip-10441-how-can-vbscript-create-multiple-folders-path-mkdir-command
+    Function MakeDir (strPath)
+      Dim strParentPath, objFSO
+      Set objFSO = CreateObject("Scripting.FileSystemObject")
+      On Error Resume Next
+      strParentPath = objFSO.GetParentFolderName(strPath)
+
+      If Not objFSO.FolderExists(strParentPath) Then MakeDir strParentPath
+      If Not objFSO.FolderExists(strPath) Then objFSO.CreateFolder strPath
+      On Error Goto 0
+      MakeDir = objFSO.FolderExists(strPath)
+
+    End Function
+
+	Function SearchPresentations(path)
+
+		  For Each folder In path.SubFolders
+		    SearchPresentations folder
+		  Next
+
+		  For Each file In path.Files
+				If Left(fso.GetExtensionName (file.Path), 3) = "ppt" Then
+					WScript.echo "found "&amp;file.path
+					ExportSlides(file.Path)
+				End If
+		  Next
+
+    End Function
+
+    Sub ExportSlides(sFile)
+        Set objRegEx = CreateObject("VBScript.RegExp")
+        objRegEx.Global = True
+        objRegEx.IgnoreCase = True
+        objRegEx.MultiLine = True
+        ' "." doesn't work for multiline in vbs, "[\s,\S]" does...
+        objRegEx.Pattern = "[\s,\S]*{adoc}"
+        ' http://www.pptfaq.com/FAQ00481_Export_the_notes_text_of_a_presentation.htm
+        strFileName = fso.GetFIle(sFile).Name
+        Set oPPT = CreateObject("PowerPoint.Application")
+        Set oPres = oPPT.Presentations.Open(sFile, True, False, False) ' Read Only, No Title, No Window
+        Set oSlides = oPres.Slides
+        strNotesText = ""
+        strImagePath = "/src/docs/images/ppt/" &amp; strFileName &amp; "/"
+        MakeDir("." &amp; strImagePath)
+        strNotesPath = "/src/docs/ppt/"
+        MakeDir("." &amp; strNotesPath)
+        For Each oSl In oSlides
+           strSlideName = oSl.Name
+           ' WScript.echo fso.GetAbsolutePathName(".") &amp; strImagePath &amp; strSlideName &amp; ".jpg"
+           oSl.Export fso.GetAbsolutePathName(".") &amp; strImagePath &amp; strSlideName &amp; ".jpg", ".jpg"
+            For Each oSh In oSl.NotesPage.Shapes
+                If oSh.PlaceholderFormat.Type = ppPlaceholderBody  Then
+                    If oSh.HasTextFrame Then
+                        If oSh.TextFrame.HasText Then
+                            strCurrentNotes = oSh.TextFrame.TextRange.Text
+                            strCurrentNotes = Replace(strCurrentNotes,vbVerticalTab, vbCrLf)
+                            strCurrentNotes = Replace(strCurrentNotes,"{slide}","image::ppt/"&amp;strFileName&amp;"/"&amp;strSlideName&amp;".jpg[]")
+                            ' remove speaker notes before marker "{adoc}"
+                            strCurrentNotes = objRegEx.Replace(strCurrentNotes,"")
+                            strNotesText = strNotesText  &amp; vbCrLf &amp; strCurrentNotes &amp; vbCrLf &amp; vbCrLf
+                        End If
+                    End If
+                End If
+            Next
+        Next
+        ' WScript.echo fso.GetAbsolutePathName(".") &amp; strNotesPath&amp;""&amp;strFileName&amp;".ad"
+        ' http://stackoverflow.com/questions/2524703/save-text-file-utf-8-encoded-with-vba
+
+        Set fsT = CreateObject("ADODB.Stream")
+        fsT.Type = 2 'Specify stream type - we want To save text/string data.
+        fsT.Charset = "utf-8" 'Specify charset For the source text data.
+        fsT.Open 'Open the stream And write binary data To the object
+        fsT.WriteText "ifndef::imagesdir[:imagesdir: ../../images]"&amp;vbCrLf&amp;CStr(strNotesText)
+        fsT.SaveToFile fso.GetAbsolutePathName(".") &amp; strNotesPath&amp;""&amp;strFileName&amp;".ad", 2 'Save binary data To disk
+        oPres.Close()
+        oPPT.Quit()
+    End Sub
+
+  set fso = CreateObject("Scripting.fileSystemObject")
+  WScript.echo "Slide extractor"
+  WScript.echo "looking for .ppt files in " &amp; fso.GetAbsolutePathName(".") &amp; "/src"
+  SearchPresentations fso.GetFolder("./src")
+  WScript.echo "finished exporting slides"</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportexcel">3.14. exportExcel</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_exportExcel.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/exportExcel.png" alt="exportExcel">
+</div>
+</div>
+<div class="paragraph">
+<p>Sometimes you have tabular data to be included in your documentation.
+Then it is likely that the data is available as excel sheet or you would like to use MS Excel to create and edit it.</p>
+</div>
+<div class="paragraph">
+<p>Either way, this task lets you export your excel sheet and include it directly in your docs.</p>
+</div>
+<div class="paragraph">
+<p>The task searches for <code>.xlsx</code> files and exports each contained worksheet as <code>.csv</code> and as <code>.adoc</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Formulas contained in your worksheet are evaluated and exported statically.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The generated files are written to <code>src/excel/[filename]/[worksheet].(adoc|cvs)</code> .
+The <code>src</code> folder is chosen over the <code>build</code> folder to get a better history for all changes on the worksheets.</p>
+</div>
+<div class="paragraph">
+<p>The files can be included either as AsciiDoc</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>include::excel/Sample.xlsx/Numerisch.adoc[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or as CSV file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[options="header",format="csv"]
+|===
+include::excel/Sample.xlsx/Numerisch.csv[]
+|===</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AsciiDoc version gives you a bit more control:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>horizontal and vertical alignment is preserved</p>
+</li>
+<li>
+<p>line breaks are preserved</p>
+</li>
+<li>
+<p>column width relative to other columns is preserved</p>
+</li>
+<li>
+<p>background colors are preserved.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_source_13">3.14.1. Source</h4>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportExcel(
+        description: 'exports all excelsheets to csv and AsciiDoc',
+        group: 'docToolchain'
+) {
+    doFirst {
+        File sourceDir = file(srcDir)
+
+        def tree = fileTree(srcDir).include('**/*.xlsx').exclude('**/~*')
+
+        def exportFileDir = new File(sourceDir, 'excel')
+
+        //make sure path for notes exists
+        exportFileDir.deleteDir()
+        //create a readme to clarify things
+        def readme = """This folder contains exported workbooks from Excel.
+
+Please note that these are generated files but reside in the `src`-folder in order to be versioned.
+
+This is to make sure that they can be used from environments other than windows.
+
+# Warning!
+
+**The contents of this folder will be overwritten with each re-export!**
+
+use `gradle exportExcel` to re-export files
+"""
+        exportFileDir.mkdirs()
+        new File(exportFileDir, '/readme.ad').write(readme)
+    }
+    doLast {
+        File sourceDir = file(srcDir)
+        def exportFileDir = new File(sourceDir, 'excel')
+        def tree = fileTree(srcDir).include('**/*.xlsx').exclude('**/~*')
+
+        def nl = System.getProperty("line.separator")
+
+        def export = { sheet, evaluator, targetFileName -&gt;
+            def targetFileCSV = new File(targetFileName + '.csv')
+            def targetFileAD = new File(targetFileName + '.adoc')
+            def df = new org.apache.poi.ss.usermodel.DataFormatter();
+            def regions = []
+            sheet.numMergedRegions.times {
+                regions &lt;&lt; sheet.getMergedRegion(it)
+            }
+            logger.debug "sheet contains ${regions.size()} regions"
+            def color = ''
+            def resetColor = false
+            def numCols = 0
+            def headerCreated = false
+            def emptyRows = 0
+            for (int rowNum=0; rowNum&lt;=sheet.lastRowNum; rowNum++) {
+                def row = sheet.getRow(rowNum)
+                if (row &amp;&amp; !headerCreated) {
+                    headerCreated = true
+                    // create AsciiDoc table header
+                    def width = []
+                    numCols = row.lastCellNum
+                    numCols.times { columnIndex -&gt;
+                        width &lt;&lt; sheet.getColumnWidth((int) columnIndex)
+                    }
+                    //lets make those numbers nicer:
+                    width = width.collect { Math.round(100 * it / width.sum()) }
+                    targetFileAD.append('[options="header",cols="' + width.join(',') + '"]' + nl)
+                    targetFileAD.append('|===' + nl)
+                }
+                def data = []
+                def style = []
+                def colors = []
+                // For each row, iterate through each columns
+                if (row &amp;&amp; (row?.lastCellNum!=-1)) {
+                    numCols.times { columnIndex -&gt;
+                        def cell = row.getCell(columnIndex)
+                        if (cell) {
+                            def cellValue = df.formatCellValue(cell, evaluator)
+                            if (cellValue.startsWith('*') &amp;&amp; cellValue.endsWith('\u20AC')) {
+                                // Remove special characters at currency
+                                cellValue = cellValue.substring(1).trim();
+                            }
+                            def cellStyle = ''
+                            def region = regions.find { it.isInRange(cell.rowIndex, cell.columnIndex) }
+                            def skipCell = false
+                            if (region) {
+                                //check if we are in the upper left corner of the region
+                                if (region.firstRow == cell.rowIndex &amp;&amp; region.firstColumn == cell.columnIndex) {
+                                    def colspan = 1 + region.lastRow - region.firstRow
+                                    def rowspan = 1 + region.lastColumn - region.firstColumn
+                                    if (rowspan &gt; 1) {
+                                        cellStyle += "${rowspan}"
+                                    }
+                                    if (colspan &gt; 1) {
+                                        cellStyle += ".${colspan}"
+                                    }
+                                    cellStyle += "+"
+                                } else {
+                                    skipCell = true
+                                }
+                            }
+                            if (!skipCell) {
+                                switch (cell.cellStyle.alignmentEnum.toString()) {
+                                    case 'RIGHT':
+                                        cellStyle += '&gt;'
+                                        break
+                                    case 'CENTER':
+                                        cellStyle += '^'
+                                        break
+                                }
+                                switch (cell.cellStyle.verticalAlignmentEnum.toString()) {
+                                    case 'BOTTOM':
+                                        cellStyle += '.&gt;'
+                                        break
+                                    case 'CENTER':
+                                        cellStyle += '.^'
+                                        break
+                                }
+                                color = cell.cellStyle.fillForegroundXSSFColor?.rgb?.encodeHex()
+                                color = color != null ? nl + "{set:cellbgcolor:#${color}}" : ''
+                                data &lt;&lt; cellValue
+                                if (color == '' &amp;&amp; resetColor) {
+                                    colors &lt;&lt; nl + "{set:cellbgcolor!}"
+                                    resetColor = false
+                                } else {
+                                    colors &lt;&lt; color
+                                }
+                                if (color != '') {
+                                    resetColor = true
+                                }
+                                style &lt;&lt; cellStyle
+                            } else {
+                                data &lt;&lt; ""
+                                colors &lt;&lt; ""
+                                style &lt;&lt; "skip"
+                            }
+                        } else {
+                            data &lt;&lt; ""
+                            colors &lt;&lt; ""
+                            style &lt;&lt; ""
+                        }
+
+                    }
+                    emptyRows = 0
+                } else {
+                    if (emptyRows&lt;3) {
+                        //insert empty row
+                        numCols.times {
+                            data &lt;&lt; ""
+                            colors &lt;&lt; ""
+                            style &lt;&lt; ""
+                        }
+                        emptyRows++
+                    } else {
+                        break
+                    }
+                }
+
+                targetFileCSV.append(data
+                        .collect {
+                    "\"${it.replaceAll('"', '""')}\""
+                }
+                .join(',') + nl, 'UTF-8')
+                targetFileAD.append(data
+                        .withIndex()
+                        .collect { value, index -&gt;
+                    if (style[index] == "skip") {
+                        ""
+                    } else {
+                        style[index] + "| ${value.replaceAll('[|]', '{vbar}').replaceAll("\n", ' +$0') + colors[index]}"
+                    }
+                }
+                .join(nl) + nl * 2, 'UTF-8')
+            }
+            targetFileAD.append('|===' + nl)
+        }
+
+
+        tree.each { File excel -&gt;
+            println excel
+            def excelDir = new File(exportFileDir, excel.getName())
+            excelDir.mkdirs()
+            InputStream inp
+            inp = new FileInputStream(excel)
+            def wb = org.apache.poi.ss.usermodel.WorkbookFactory.create(inp);
+            def evaluator = wb.getCreationHelper().createFormulaEvaluator();
+            for (int wbi = 0; wbi &lt; wb.getNumberOfSheets(); wbi++) {
+                def sheetName = wb.getSheetAt(wbi).getSheetName()
+                println sheetName
+                def targetFile = new File(excelDir, sheetName)
+                export(wb.getSheetAt(wbi), evaluator, targetFile.getAbsolutePath())
+            }
+            inp.close();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportmarkdown">3.15. exportMarkdown</h3>
+<div class="paragraph">
+<p>The <em>exportMarkdown</em> task can be used to include <a href="http://markdown.de">markdown</a> files into the documentation.</p>
+</div>
+<div class="paragraph">
+<p>The task is scanning the directory <code>/src/docs</code> for markdown files (<code>*.md</code>) and converts them into AsciiDoc files. The converted files can then be referenced from within the <code>/build</code>-folder.</p>
+</div>
+<div class="sect3">
+<h4 id="_source_14">3.15.1. Source</h4>
+<div class="listingblock">
+<div class="title">exportMarkdown.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">task exportMarkdown(
+        description: 'exports all markdown files to AsciiDoc',
+        group: 'docToolchain',
+        type: Copy
+) {
+    from srcDir
+
+    include("**/*.md") //include only markdown files
+    includeEmptyDirs = false
+    rename(/(.+).md/, '$1.adoc') //rename all files from *.md to *.adoc
+    filter(Markdown2AdocFilter) // convert the content of the files
+
+    into targetDir
+}
+
+class Markdown2AdocFilter extends FilterReader {
+    Markdown2AdocFilter(Reader input) {
+        super(new StringReader(nl.jworks.markdown_to_asciidoc.Converter.convertMarkdownToAsciiDoc(input.text)))
+    }
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_htmlsanitycheck">3.16. htmlSanityCheck</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_htmlSanityCheck.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ea/Manual/htmlSanityCheck.png" alt="htmlSanityCheck">
+</div>
+</div>
+<div class="paragraph">
+<p>This task invokes the <a href="https://github.com/aim42/htmlSanityCheck">htmlSanityCheck</a> gradle plugin.
+It is a standalone (batch- and command-line) html sanity checker - it detects missing images, dead links, and duplicate bookmarks.</p>
+</div>
+<div class="paragraph">
+<p>In docToolchain, this task is used to ensure that the generated HTML contains no missing links or other problems.</p>
+</div>
+<div class="paragraph">
+<p>This task is the last default task and creates a report in <code>build/report/htmlchecks/index.html</code></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/manual/htmlSanityCheck.png" alt="htmlSanityCheck">
+</div>
+<div class="title">Figure 2. sample report</div>
+</div>
+<div class="paragraph">
+<p>Further information can be found on github: <a href="https://github.com/aim42/htmlSanityCheck" class="bare">https://github.com/aim42/htmlSanityCheck</a></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/htmlSanityCheck/">Automated Quality-Checks</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_source_15">3.16.1. Source</h4>
+<div class="listingblock">
+<div class="title">htmlSanityCheck.gradle</div>
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">htmlSanityCheck {
+    sourceDir = new File("$targetDir/html5")
+
+    // files to check - in Set-notation
+    //sourceDocuments = [ "one-file.html", "another-file.html", "index.html"]
+
+    // where to put results of sanityChecks...
+    checkingResultsDir = new File( checkingResultsPath )
+    checkExternalLinks = false
+}</code></pre>
+</div>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dependencyupdates">3.17. dependencyUpdates</h3>
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}03_task_dependencyUpdates.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>This task uses the <a href="https://github.com/ben-manes/gradle-versions-plugin">Gradle versions plugin</a> created by Ben Manes to check for outdated build dependencies.
+Quite helpful to keep all dependencies up-to-date.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+if you discover newer version, this does not mean that they will play nicely together. If you want to make sure that everything works, rely on the versions which the docToolchain contributors have selected.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Blog-Post: <a href="https://rdmueller.github.io/dependency-update/">Handle Dependency Updates the easy Way</a>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_faq_frequently_asked_questions">4. FAQ: Frequently asked Questions</h2>
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}06_Frequently_asked_Questions.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>This section tries to answer the most common and frequently asked questions about how to work with docToolchain.
+It will also contain questions relevant to the tools used to build docToolchain, but the main focus is docToolchain itself.</p>
+</div>
+<div class="paragraph">
+<p>If you are stuck, make sure that you also check other sources like <a href="https://stackoverflow.com/questions/tagged/asciidoctor">stackoverflow</a>.</p>
+</div>
+<div class="paragraph">
+<p>There is also a great FAQ for all your arc42 questions: <a href="http://faq.arc42.org/home/" class="bare">http://faq.arc42.org/home/</a></p>
+</div>
+<div class="paragraph">
+<p>If you have a question or problem for which you can&#8217;t find a solution, you can</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>for this repo, add your question and create a pull request</p>
+</li>
+<li>
+<p>raise the issue through the <a href="https://github.com/docToolchain/docToolchain/issues">github issue tracker</a></p>
+</li>
+<li>
+<p>ask your question on <a href="https://stackoverflow.com/questions/tagged/doctoolchain?sort=active&amp;pageSize=50">stackoverflow</a></p>
+</li>
+<li>
+<p>discuss the problem on <a href="https://t.co/lnqrUc1YMM">slack</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_images">4.1. Images</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://asciidoctor.org/docs/user-manual/#images">Asciidoctor User Manual on images</a></p>
+</li>
+<li>
+<p><a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#images">Asciidoctor Quick Reference on images</a></p>
+</li>
+<li>
+<p><a href="http://asciidoctor.org/docs/asciidoc-writers-guide/#images">AsciiDoctor Writer Guide on images</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_q_why_are_images_not_shown_in_the_preview_of_my_editor">4.1.1. Q: Why are images not shown in the preview of my editor?</h4>
+<div class="paragraph">
+<p>A: this is most likely because your editor doesn&#8217;t know where they are stored.
+If you follow the default settings, you probably store your images in a subfolder <code>images</code>.
+The build script knows about it, because the attribute <code>imagesdir</code> has been set to <code>./images</code>, but your editor doesn&#8217;t care about the build script - it only checks the currently opened AsciiDoc file.</p>
+</div>
+<div class="paragraph">
+<p>The solution is to add a line to each file which checks if the <code>imagesdir</code> is set and if not, sets it to a valid value:</p>
+</div>
+<div class="paragraph">
+<p><code>ifndef::imagesdir[:imagesdir: ../images]</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_q_which_image_format_should_i_use">4.1.2. Q: Which image format should I use?</h4>
+<div class="paragraph">
+<p>A: AsciiDoc and AsciiDoctor support several formats like GIF, PNG, JPG and SVG.
+However, if you want to use most features, some formats are better to use than others:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">GIF</dt>
+<dd>
+<p>is not supported by the PDF renderer. Use JPG or PNG instead.</p>
+</dd>
+<dt class="hdlist1">JPG</dt>
+<dd>
+<p>is great for photos but not for diagrams (you might get compression artefacts).
+So, if you want to use photos from your flipcharts - JPG might work for you.</p>
+</dd>
+<dt class="hdlist1">SVG</dt>
+<dd>
+<p>great for high resolution diagrams, but not good supported by DOCX as output format.
+OpenOffice Writer might display the image a bit stretched, MS Word didn&#8217;t display it at all in some experiments.</p>
+</dd>
+<dt class="hdlist1">PNG</dt>
+<dd>
+<p>this is the preferred format for images used with docToolchain.
+All output formats support it and if diagrams are rendered with a resolution high enough to display all details, it will also be scaled ok with all output formats.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_q_why_are_my_images_rotated_in_the_output">4.1.3. Q: Why are my images rotated in the output?</h4>
+<div class="paragraph">
+<p>A: This most likely happens when you&#8217;ve taken photos with a mobile device and include them in you docs.
+A mobile device does not rotate the image itself, it only stores the orientation of the device in the meta data of the photo.
+Your operating system will show you the image as expected, but the rendered AsciiDoc will not.
+This can be „fixed“ with Imagemagick, use convert -auto-orient or mogrify -auto-orient (thanx to <a href="https://twitter.com/RalfDMueller/status/920888868345384960">@rotnroll666</a> for this tip).
+You can also try to just open the image in your favourite editor and re-save it.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exportvisio_2">4.2. exportVisio</h3>
+<div class="sect3">
+<h4 id="_q_i_get_an_error_message_saying_that_a_library_is_not_registered_when_i_try_to_run_the_exportvisio_task">4.2.1. Q: I get an error message saying that a library is not registered when I try to run the <code>exportVisio</code>-task.</h4>
+<div class="listingblock">
+<div class="content">
+<pre>Ausnahme beim Festlegen von "Visible": "Das COM-Objekt des Typs "Microsoft.Office.Interop.Visio.ApplicationClass" kann nicht in den Schnittstellentyp
+"Microsoft.Office.Interop.Visio.IVApplication" umgewandelt werden. Dieser Vorgang konnte nicht durchgeführt werden, da der QueryInterface-Aufruf an die
+COM-Komponente für die Schnittstelle mit der IID "{000D0700-0000-0000-C000-000000000046}" aufgrund des folgenden Fehlers nicht durchgeführt werden konnte:
+Bibliothek nicht registriert. (Ausnahme von HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))."
+In ...\scripts\VisioPageToPngConverter.ps1:48 Zeichen:1
++ $VisioApp.Visible = $false
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], SetValueInvocationException
+    + FullyQualifiedErrorId : ExceptionWhenSetting</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A: When Visio is installed, it registers itself as com library. It seems that this registration can break.
+You can fix this by visiting the windows system settings &#8594; install or uninstall a program, select <code>visio</code>, select <code>change</code> and then <code>repair</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sparx_enterprise_architect">4.3. Sparx Enterprise Architect</h3>
+<div class="sect3">
+<h4 id="_q_sparx_enterprise_architect_is_a_windows_tool_isnt_it">4.3.1. Q: Sparx Enterprise Architect is a Windows tool, isn&#8217;t it?</h4>
+<div class="paragraph">
+<p>Yes, it is, but it is written to support CrossOver in order to run on Linux based systems. Wine, the open source branch of CrossOver seems to work as well.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at this page to see how to install it on a linux based system: <a href="http://www.sparxsystems.com/support/faq/ea_on_linux.html" class="bare">http://www.sparxsystems.com/support/faq/ea_on_linux.html</a></p>
+</div>
+<div class="paragraph">
+<p>I (Ralf) once gave it a try and even managed to get remote control over EA via VBS and COM up and running (which is the pre-requisite for docToolchain).</p>
+</div>
+<hr>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_further_reading">5. Further Reading</h2>
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}04_further_reading.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>This chapter lists some additional references to interesting resources.</p>
+</div>
+<div class="sect2">
+<h3 id="_links">5.1. Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>AsciiDoc</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://asciidoctor.org/docs/user-manual/">Asciidoctor User-Manual</a></p>
+</li>
+<li>
+<p><a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/">AsciiDoc Syntax Quick Reference</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>arc42</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://arc42.org/">arc42</a></p>
+</li>
+<li>
+<p><a href="http://docs.arc42.org/home/">arc42 Tips &amp; Tricks</a></p>
+</li>
+<li>
+<p><a href="http://faq.arc42.org/home/">rc42 FAQ</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="https://rdmueller.github.io/">the docToolchain Blog</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_books">5.2. Books</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+links to Amazon are affiliate links
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_english_books">5.2.1. English Books</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://amzn.to/2smRhxE">DOCS-LIKE-CODE</a> by Anne Gentle</p>
+</li>
+<li>
+<p><a href="http://amzn.to/2sn0kyx">Modern technical writing: An Introduction to Software Documentation</a> by Andrew Etter</p>
+</li>
+<li>
+<p><a href="https://leanpub.com/arc42byexample">arc42 by Example</a> by Gernot Starke, Stefan Zörner, Michael Simons</p>
+</li>
+<li>
+<p><a href="https://leanpub.com/arc42inpractice">Communicating Software Architectures with arc42</a> by Gernot Starke und Peter Hruschka</p>
+</li>
+<li>
+<p><a href="https://leanpub.com/visualising-software-architecture">Visualise, document and explore your software architecture</a> by Simon Brown</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_german_books">5.2.2. German Books</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://amzn.to/2smM5Kp">arc42 in Aktion: Praktische Tipps zur Architekturdokumentation</a> von Gernot Starke und Peter Hruschka</p>
+</li>
+<li>
+<p><a href="http://amzn.to/2ru9Yvr">Softwarearchitekturen dokumentieren und kommunizieren: Entwürfe, Entscheidungen und Lösungen nachvollziehbar und wirkungsvoll festhalten</a> von Stefan Zörner</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_past_and_upcoming_talks">5.3. Past and upcoming Talks</h3>
+<div class="sect3">
+<h4 id="_dokumentation_am_riesen_beispiel_arc42_asciidoc_und_co_in_aktion">5.3.1. Dokumentation am (Riesen-)Beispiel – arc42, AsciiDoc und Co. in Aktion</h4>
+<div class="paragraph">
+<p><a href="https://twitter.com/gernotstarke">Gernot Starke</a> and <a href="https://twitter.com/ralfdmueller">Ralf D. Müller</a></p>
+</div>
+<div class="paragraph">
+<p>Anhand eines großen Systems zeigen Gernot und Ralf, wie Sie mit ziemlich wenig Aufwand angemessene und vernünftige Dokumentation für unterschiedliche Stakeholder produzieren – sodass Entwicklungsteams dabei auch noch Spaß haben.</p>
+</div>
+<div class="paragraph">
+<p>Unser Rezept: AsciiDoc mit arc42 mischen, Automatisierung mit Gradle und Maven hinzufügen und mit Diagramm- oder Modellierungstools Ihrer Wahl kombinieren.
+Schon sind schicke HTML- und reviewfähige PDF-Dokumente fertig.
+Auf Wunsch gibts DOCX und Confluence als Zugabe.</p>
+</div>
+<div class="paragraph">
+<p>Wir zeigen, wie Sie Doku genau wie Quellcode verwalten können, stakeholderspezifische Dokumente erzeugen und Diagramme automatisiert integrieren können.
+Einige Teile dieser Doku können Sie sogar automatisiert testen.</p>
+</div>
+<div class="paragraph">
+<p>Zwischendurch bekommen Sie zahlreiche Tipps, wie und wo Sie systematisch den Aufwand für Dokumentation reduzieren können und trotzdem lesbare, verständliche und praxistaugliche Ergebnisse produzieren.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<a class="image" href="https://speakerdeck.com/rdmueller/dokumentation-am-riesen-beispiel-arc42-asciidoc-und-co-in-aktion"><img src="images/manual/speakerdeck1.png" alt="speakerdeck1"></a>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gesunde_dokumentation_mit_asciidoctor">5.3.2. Gesunde Dokumentation mit AsciiDoctor</h4>
+<div class="paragraph">
+<p><a href="https://twitter.com/ahus1de">Alexander Schwartz</a></p>
+</div>
+<div class="paragraph">
+<p>Autoren möchten Inhalte effizient dokumentieren und vorhandene Inhalte wiederverwenden. Ein Leser möchte das Dokument in einem ansprechenden Layout präsentiert bekommen.</p>
+</div>
+<div class="paragraph">
+<p>Das textbasierte AsciiDoc-Format bietet für einen Entwickler oder technischen Redakteur alle notwendigen Auszeichungselemente, um auch anspruchsvolle Dokumente zu schreiben. So werden unter anderem Tabellen, Fußnoten und annotierte Quellcodes unterstützt. Gleichzeitig ist es ähnlich leichtgewichtig wie z.B. das Markdown Format. Für die Leser wird HTML, PDF oder EPUB generiert.</p>
+</div>
+<div class="paragraph">
+<p>Da AsciiDoc wie Programmcode eingecheckt wird und Merge-Operationen einfach möglich sind, können Programmcode und Dokumentation zusammen versioniert und auf einem einheitlichen Stand gehalten werden.</p>
+</div>
+<div class="paragraph">
+<p>Der Vortrag gibt eine kurze Einführung in AsciiDoc und die dazugehörigen Werkzeuge.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<a class="image" href="https://speakerdeck.com/ahus1/gesunde-dokumentation-mit-asciidoctor"><img src="images/manual/speakerdeck2.png" alt="speakerdeck2"></a>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_acknowledgements_and_contributors">6. Acknowledgements and Contributors</h2>
+<div class="sectionbody">
+<div class="imageblock" style="float: right">
+<div class="content">
+<a class="image" href="{manualdir}05_contributors.adoc"><img src="https://img.shields.io/badge/improve-this%20doc-orange.svg" alt="improve this%20doc orange"></a>
+</div>
+</div>
+<div class="paragraph">
+<p>This project is an open source project which is based on community efforts.</p>
+</div>
+<div class="paragraph">
+<p>Many people are involved in the underlying technologies like AsciiDoc, AsciiDoctor, Gradle, arc42 etc.
+This project depends and builds on them.</p>
+</div>
+<div class="paragraph">
+<p>But it even more depends on the direct contributions made through giving feedback, creating issues, answering questions or sending pull requests.</p>
+</div>
+<div class="paragraph">
+<p>Here is an incomplete and unordered list of contributors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/bodewig">Stefan Bodewig</a></p>
+</li>
+<li>
+<p><a href="https://github.com/MoePad">MoePad</a></p>
+</li>
+<li>
+<p><a href="https://github.com/opensource21">Niels</a></p>
+</li>
+<li>
+<p><a href="https://github.com/wschaef">wschaef</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gernotstarke">Gernot Starke</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ahus1">Alexander Schwartz</a></p>
+</li>
+<li>
+<p><a href="https://github.com/aheusingfeld">Alexander Heusingfeld</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mojavelinux">Dan Allen</a></p>
+</li>
+<li>
+<p><a href="https://github.com/dl1ely">Stefan Pfeiffer</a></p>
+</li>
+<li>
+<p><a href="https://github.com/isidorotrevino">isidorotrevino</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jakubjab">Jakub Jablonski</a></p>
+</li>
+<li>
+<p><a href="https://github.com/FrankPohl">Frank Pohl</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/ixchelruiz">Ixchel Ruiz</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/ysb33r">Schalk Cronjé</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/marioggar">Mario García</a></p>
+</li>
+<li>
+<p><a href="https://github.com/joex2">Joe</a></p>
+</li>
+<li>
+<p><a href="https://github.com/davidmc24">David M. Carr</a></p>
+</li>
+<li>
+<p><a href="https://github.com/fnonnenmacher">Fabian Nonnenmacher</a></p>
+</li>
+<li>
+<p><a href="https://twitter.com/stoeps">Christoph Stoettner</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(please update your entry to match your preferences! :-)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="https://github.com/docToolchain/docToolchain/graphs/contributors"><img src="https://img.shields.io/github/contributors/doctoolchain/doctoolchain.svg" alt="doctoolchain"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-09-13 10:06:00 Central European Daylight Time
+</div>
+</div>
+</body>
+</html>
