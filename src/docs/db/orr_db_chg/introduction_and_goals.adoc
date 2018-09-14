@@ -1,4 +1,11 @@
-= Introduction and Goals
+= Introduction
 
-== create awesome docs!
+== What kind of document it is?
+
+This document is a loose collection of ideas aimed at changing the dbOpera system.
+
+A good start for making changes is vision. in this Vision is key tool to sell the benefits of proposed change.
+Vision should describes how new capabilities will meet the business goals and objectives.
+
+Because I am not aware neither vision nor concerns which key stakeholders has, rest of this document is build base on series of author guess.
 

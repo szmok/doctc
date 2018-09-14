@@ -1,0 +1,18 @@
+= Assumptions
+
+The are some universal values which we want to achieve, like:
+	 * increase business process transparency
+	 * simplify maintenance process
+	 * reduce failure rate
+	 * increase the effectiveness of implementing changes
+	 * make GUI more intuitive 
+	 etc.
+
+To measure effectiveness in each of those points we should start define the performance metrics and measures.
+	 
+	 
+== Increase 
+
+ we do not have 
+	1. Achieve business flow more transparent?
+	2. Build environment where change is based on robust unambiguous source (more independent from people).
