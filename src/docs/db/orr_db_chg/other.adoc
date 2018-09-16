@@ -1,0 +1,34 @@
+
+
+There are some universal values which everyone who is responsible for IT system want to achieve, like:
+
+	 * increase business process transparency
+	 * simplify maintenance process
+	 * reduce failure rate
+	 * increase the effectiveness of implementing changes
+	 * make GUI more intuitive
+	 * etc...
+
+This kind of goals are obvious, and every managaer hard work on better performance in each listed points.
+Also measure effectiveness in any of those points require define the performance metrics and measures, what is out of scope of this document.
+There are some universal values which everyone who is responsible for IT system want to achieve, like:
+
+	 * increase business process transparency
+	 * simplify maintenance process
+	 * reduce failure rate
+	 * increase the effectiveness of implementing changes
+	 * make GUI more intuitive
+	 * etc...
+
+This kind of goals are obvious, and every managaer hard work on better performance in each listed points.
+Also measure effectiveness in any of those points require define the performance metrics and measures, what is out of scope of this document.
+
+
+
+Instead of this let's try formulate thesis (assumptions) on more expert way.
+
+== 
+
+
+we try to  	 
+	 

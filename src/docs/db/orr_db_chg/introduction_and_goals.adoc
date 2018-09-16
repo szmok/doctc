@@ -7,5 +7,5 @@ This document is a loose collection of ideas aimed at changing the dbOpera syste
 A good start for making changes is vision. in this Vision is key tool to sell the benefits of proposed change.
 Vision should describes how new capabilities will meet the business goals and objectives.
 
-Because I am not aware neither vision nor concerns which key stakeholders has, rest of this document is build base on series of author guess.
+Because author is not aware neither vision nor concerns which key stakeholders has, rest of this document is build base on series of author guess.
 

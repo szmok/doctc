@@ -1,13 +1,16 @@
-= Introduction and Goals
+= System Architecture
 
-== create awesome docs!
+== Current state
 
-layout: landscape
+From user perspective dbOpera is transactional system, to which we can load data from file, get reports and do some actions on GUI.
+On backend side we have full interactions between, and what is worth noting all of them change bussiness data.
+
+.Overview of dbOpera components, and relations between them.
 [ditaa, "{plantUMLDir}hl_overview_now", png]
 ----
                                  +----------------------+                                             +----------------------+
                                  |cFCC                  | <=----------------------------------------> |cCEF                  |
-                                 |    external systems  |                                             |                      |
+                                 |    other systems     |                                             |                      |
                                  |                      |                                             | BATCH processing     |
                                  |                      |                                             |                      |
                                  |                      |        +---------------------+              |                      |
@@ -46,6 +49,30 @@ layout: landscape
                                                                                                                                     +------------------------------+
 ----
 
+Loose approach to control and minimal amount of constraints makes enviormant very flaxible.
+This approach has benefits if we want to have quick results, and we do not care in long term perspective. 
+
+This kind of architecture has also some disadvantages.
+Mix of huge rotation in development team in dbOpera area, lack of system architecture and focus on short perspective goals provide to unstructured and difficult to maintain source code.
+
+== One of the possible ways
+
+To keep similar functionalities all main componets must remain, but to increase architectural order character each of them should be changed.
+Role of each components must be reduced to area dedicated to them, while well documented consistent and stable interfaces should ensure architectural control.
+
+
+In connection with the above, and follow the rule to effective utilize current resources quite natural is move all reporting functionalities into COGNOS tool.
+
+
+ exculude change to move functionalities into more dedicated components which are connected by well documented interfaces
+* 
+, and at the same made process more transparent all 
+
+
+
+It means we have batch processing sheduled from dbOpera  GUI and other systems, batch process update 
+We have 
+with other systems, batch processing between components responsible for 
 
 
 [ditaa, "{plantUMLDir}hl_overview_after", png]
