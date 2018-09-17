@@ -1,6 +1,10 @@
 :imagesdir: images
 
-= DBORR wind of change
+= dbOpera wind of change
+
+
+
+_by Szymon Rogalski_
 
 // numbering from here on
 :numbered:
@@ -16,7 +20,7 @@ include::orr_db_chg/high_level.adoc[leveloffset=+1]
 ---
 
 <<<<
-include::orr_db_chg/assumptions.adoc[leveloffset=+1]
+include::orr_db_chg/bpm.adoc[leveloffset=+1]
 
 ---
 

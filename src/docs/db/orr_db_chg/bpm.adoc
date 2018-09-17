@@ -1,0 +1,46 @@
+== Business Process Modeling.
+
+The biggest problem for dbOpera system is lack of a common platform for business and development.
+Those two words has no connection.
+
+During last years we were not able to build formal language for describing system in way understandable for both business and development.
+Solution might be Business Process Modeling.
+I am pretty sure in Deutche Bank are applicable BPM tools (like JBoss BPM suite or SAP BPM), and I think we should consider implement this solution in this area.
+
+.BPM
+[ditaa, "{plantUMLDir}bpm", png]
+----
++------------------------------------------------+                                                   +------------------------------------------------+
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
+|       Business                                 |                                                   |       Business                                 |
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
++-----------------------+------------------------+                                                   +-----------------------+------------------------+
+                        |                                                                                                     ^
+                        |                                                                                                     |
+                        |                                                                                                     |
+                        |                                                                                                     V
+                        v                                                                                       +------------+--------------+
+                                                              +---------------------->                          |                           |
+                        ?                                                                                       |            BPM            |
+                                                                                                                |                           |
+                        ^                                                                                       +-------------+-------------+
+                        |                                                                                                     ^
+                        |                                                                                                     |
+                        |                                                                                                     |
+                        |                                                                                                     V
++-----------------------+------------------------+                                                   +------------------------+-----------------------+
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
+|       System implementation                    |                                                   |       System implementation                    |
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
+|                                                |                                                   |                                                |
++------------------------------------------------+                                                   +------------------------------------------------+
+----
+
+Implementation of this kind of tool would able change state from _human-centric_ approach into more service orientated platform, what seems be in accordance with PaaS strategy. 
